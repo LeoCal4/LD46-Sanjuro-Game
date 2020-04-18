@@ -72,6 +72,7 @@ tile_data = PoolIntArray( -524278, 1, 0, -524277, 1, 0, -524276, 1, 0, -524275, 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation2d",
 ]]
+editor/display_folded = true
 position = Vector2( 528.042, 34.0734 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
@@ -79,6 +80,7 @@ visible = false
 navpoly = SubResource( 1 )
 
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 814.74, 64.8908 )
 script = ExtResource( 7 )
 

@@ -33,3 +33,6 @@ drag_margin_bottom = 0.1
 script = ExtResource( 3 )
 
 [node name="BulletStartPosition" type="Position2D" parent="."]
+
+[node name="BerserkTimer" type="Timer" parent="."]
+wait_time = 10.0

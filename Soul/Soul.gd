@@ -14,6 +14,6 @@ func _physics_process(delta):
 
 
 func _on_Soul_body_entered(body):
-	if body == get_tree().get_nodes_in_group('player')[0]:
+	if body == get_tree().get_nodes_in_group('player')[0] and body.souls < body.max_souls:
 		body.get_soul()
 		queue_free()

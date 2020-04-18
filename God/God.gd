@@ -16,19 +16,21 @@ var time_passed = 0
 
 func _ready():
 	center = position
+	hp = 89
 
 func _physics_process(delta):
 	time_passed += delta
 	if time_passed >= 1:
-		set_hp(-time_passed)
+		set_hp(-time_passed * Globals.decay_multiplicator)
 		time_passed = 0
 	angle += rotation_speed * delta
 	position = center + Vector2(sin(angle/2), cos(angle) * radius)
 
 func set_hp(amount):
+	check_berserk(amount)
 	hp = clamp(hp + amount, 0, MAX_HEALTH)
 	label.text = str(int(hp))
-	if hp >= 90: 
+	if hp >= 90:
 		current_frame = 0
 	elif hp >= 50:
 		current_frame = 1
@@ -37,6 +39,12 @@ func set_hp(amount):
 	else:
 		current_frame = 3
 	sprite.frame = current_frame
+
+func check_berserk(amount):
+	if hp < 90 and hp + amount >= 90:
+		get_tree().get_nodes_in_group('player')[0].activate_berserk_mode()
+	elif hp >= 90 and hp + amount < 89:
+		get_tree().get_nodes_in_group('player')[0].deactivate_berserk_mode()
 
 func receive_soul():
 	sprite.frame = 4
