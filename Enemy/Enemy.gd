@@ -13,9 +13,9 @@ onready var sprite = $Sprite
 onready var damage_sprite = $DamageSprite
 onready var anim_player = $AnimationPlayer
 
-var player
+var target
 var hp = FULL_HP setget set_hp
-var damage
+var damage = 20
 var motion
 var acceleration
 var knockback
@@ -23,7 +23,6 @@ var knockback
 signal camera_shake_requested
 
 func _ready():
-	damage = 20
 	add_to_group('enemies')
 	motion = Vector2.ZERO
 	acceleration = Vector2.ZERO
@@ -33,17 +32,21 @@ func _ready():
 		map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
 
 func _physics_process(delta):
-	if player == null:
-		player = get_tree().get_nodes_in_group('player')[0]
+	if target == null:
+		target = get_tree().get_nodes_in_group('player')[0]
 	search(delta)
 	if knockback != Vector2():
 		knockback = knockback.linear_interpolate(Vector2(), 0.5)
 
 func search(delta):
 	var starting_point = self.global_position
-	if (player.global_position.distance_to(starting_point)) >= 500:
+	if !is_instance_valid(target) or target.is_queued_for_deletion():
+		if !SceneLoader.is_loading_scene:
+			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	var path_to_player = map_navigation.get_simple_path(starting_point, player.global_position)
+	if (target.global_position.distance_to(starting_point)) >= 500:
+		return
+	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
 	var move_distance = MOVE_SPEED * delta
 	for point in range(path_to_player.size()):
 		var distance_to_next_point = starting_point.distance_to(path_to_player[point])
@@ -59,10 +62,10 @@ func search(delta):
 	if motion != Vector2() and !anim_player.is_playing():
 		anim_player.play('move')
 
-func recieve_damage(damage, knockback_direction):
+func receive_damage(damage, knockback_direction, source):
+	target = source
 	set_hp(damage)
 	emit_signal('camera_shake_requested')
-	#knockback = lerp(acceleration, knockback_direction * 5, 0.5)
 	knockback = knockback_direction * KNOCKBACK
 	anim_player.stop()
 	sprite.visible = false
@@ -83,9 +86,8 @@ func set_hp(damage):
 	if hp <= 0:
 		die()
 
-
 func _on_PlayerHitArea_body_entered(body):
-	if body == get_tree().get_nodes_in_group('player')[0]:
-		print('player hit')
-		body.receive_damage(damage)
-		knockback -= (body.global_position - global_position).normalized() * KNOCKBACK
+	if body == target:
+		var knockback_direction = (body.global_position - global_position).normalized()
+		body.receive_damage(damage, knockback_direction, self)
+		knockback -= knockback_direction * KNOCKBACK

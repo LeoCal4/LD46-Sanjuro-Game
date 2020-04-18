@@ -16,7 +16,6 @@ var time_passed = 0
 
 func _ready():
 	center = position
-	hp = 89
 
 func _physics_process(delta):
 	time_passed += delta
@@ -29,6 +28,8 @@ func _physics_process(delta):
 func set_hp(amount):
 	check_berserk(amount)
 	hp = clamp(hp + amount, 0, MAX_HEALTH)
+	if hp <= 0:
+		SceneLoader.reload_scene()
 	label.text = str(int(hp))
 	if hp >= 90:
 		current_frame = 0

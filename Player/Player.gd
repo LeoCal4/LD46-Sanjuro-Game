@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const FRICTION = 10
+const KNOCKBACK = 100
 
 var max_souls = 3
 var base_damage = 20
@@ -19,13 +20,17 @@ var damage = base_damage
 var souls = 3
 
 onready var bullet_start_position = $BulletStartPosition
+onready var damage_sprite = $DamageSprite
+onready var sprite = $Sprite
 const bullet_scene = preload("res://Player/Bullet/Bullet.tscn")
 
 var health = max_health
 var move_dir
 var velocity
 var acceleration
+var knockback
 var shoot_delay_timer
+var can_move 
 var can_shoot
 var can_sacrifice_souls = false
 var is_berserk = false
@@ -35,6 +40,7 @@ func _ready():
 	move_dir = Vector2(0, 0)
 	velocity = Vector2(0, 0)
 	acceleration = Vector2.ZERO
+	knockback = Vector2.ZERO
 	shoot_delay_timer = get_tree().create_timer(shoot_delay)
 	can_shoot = true
 	yield(get_tree(), 'idle_frame')
@@ -48,9 +54,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed('action'):
 		if can_sacrifice_souls:
 			sacrifice_souls()
+	if knockback != Vector2():
+		knockback = knockback.linear_interpolate(Vector2(), 0.5)
 	#look_at(get_global_mouse_position())
 
 func _handle_movement_input():
+	if !can_move:
+		return
 	move_dir = Vector2.ZERO
 	var move_dir_y = int(Input.is_action_pressed('down')) - int(Input.is_action_pressed('up'))
 	var move_dir_x = int(Input.is_action_pressed('right')) - int(Input.is_action_pressed('left'))
@@ -58,7 +68,7 @@ func _handle_movement_input():
 
 func _apply_movement(delta):
 	acceleration = move_dir * move_speed * delta
-	velocity += acceleration.clamped(max_move_speed)
+	velocity += acceleration.clamped(max_move_speed) + knockback
 	velocity = move_and_slide(velocity)
 
 func _apply_friction(delta):
@@ -71,6 +81,7 @@ func _handle_shooting():
 		bullet_instance.position = bullet_start_position.get_global_position()
 		bullet_instance.direction = -(self.global_position - get_global_mouse_position()).normalized()
 		bullet_instance.damage = damage
+		bullet_instance.parent = self
 		get_tree().get_root().add_child(bullet_instance)
 		yield(get_tree().create_timer(shoot_delay), "timeout")
 		can_shoot = true
@@ -110,5 +121,18 @@ func deactivate_berserk_mode():
 		change_stats(-7)
 		$BerserkTimer.start()
 
-func receive_damage(amount):
-	pass
+func receive_damage(amount, knockback_direction, source):
+	set_hp(-amount)
+	knockback = knockback_direction * KNOCKBACK
+	sprite.visible = false
+	damage_sprite.visible = true
+	yield(get_tree().create_timer(0.1), 'timeout')
+	sprite.visible = true
+	damage_sprite.visible = false
+
+func set_hp(amount):
+	health += amount
+	$HealthBar.value = health
+	if health <= 0:
+		can_move = false
+		SceneLoader.reload_scene()

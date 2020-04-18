@@ -1,8 +1,6 @@
 extends Node2D
 
-#export(Array, PackedScene) var enemies = []
-
-var enemy_scene = preload('res://Enemy/Enemy.tscn')
+export(Array, PackedScene) var enemies = []
 
 var time_since_last_spawn = 0
 
@@ -20,9 +18,8 @@ func _physics_process(delta):
 
 func spawn_enemy(position):
 	# play windup animation
-#	enemies.shuffle()
-#	var enemy_scene = enemies.front()
-#	var enemy = enemy_scene.instance()
+	enemies.shuffle()
+	var enemy_scene = enemies.front()
 	var enemy = enemy_scene.instance()
 	enemy.position = position
 	get_tree().get_root().call_deferred('add_child', enemy)

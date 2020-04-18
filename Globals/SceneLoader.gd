@@ -39,6 +39,8 @@ func _deferred_load_scene(scene_path):
 
 func _disable_ui():
 	UI.disable_buttons()
+	for enemy in get_tree().get_nodes_in_group('enemies'):
+		enemy.set_physics_process(false)
 
 
 func _activate_ui():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=7]
 [ext_resource path="res://God/God.tscn" type="PackedScene" id=8]
 [ext_resource path="res://EnemySpawner.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -500.527, 9.47507, 1014.5, 6.90161, 1015.97, 826.165, -505.241, 828.016 )
@@ -39,24 +40,12 @@ scale = Vector2( 24.0709, 0.49798 )
 texture = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 769.244, 426.318 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1438.5, 762.455 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 295.938, 653.927 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1165.68, 231.871 )
-
-[node name="Enemy5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 142.19, 145.952 )
+position = Vector2( 772.417, 488.198 )
 
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 5 )]
-position = Vector2( 774.499, 255.97 )
+position = Vector2( 784.019, 129.036 )
 
 [node name="Walls" type="TileMap" parent="." groups=[
 "walls",
@@ -80,9 +69,11 @@ visible = false
 navpoly = SubResource( 1 )
 
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 814.74, 64.8908 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SoulSacrificeArea"]
 position = Vector2( -29.7478, -0.710938 )
@@ -96,6 +87,7 @@ position = Vector2( 783.679, -13.1918 )
 [node name="EnemySpawner" type="Node2D" parent="."]
 editor/display_folded = true
 script = ExtResource( 9 )
+enemies = [ ExtResource( 4 ), ExtResource( 10 ) ]
 
 [node name="Position2D" type="Position2D" parent="EnemySpawner"]
 position = Vector2( 175.106, 174.626 )
@@ -234,5 +226,8 @@ position = Vector2( 1137.13, 173.148 )
 
 [node name="Position2D46" type="Position2D" parent="EnemySpawner"]
 position = Vector2( 1069.29, 290.721 )
+
+[node name="RangedEnemy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 125.348, 74.5739 )
 [connection signal="body_entered" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_entered"]
 [connection signal="body_exited" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_exited"]
