@@ -1,7 +1,5 @@
 extends Area2D
 
-onready var anim_player = $AnimationPlayer
-
 var center = 0
 var rotation_speed = 3
 var radius = 10

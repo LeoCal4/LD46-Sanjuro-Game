@@ -28,6 +28,8 @@ func _ready():
 	acceleration = Vector2.ZERO
 	knockback = Vector2.ZERO
 	connect("camera_shake_requested", get_tree().get_nodes_in_group('camera')[0], 'shake')
+	if !map_navigation:
+		map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
 
 func _physics_process(delta):
 	if player == null:

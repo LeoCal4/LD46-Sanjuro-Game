@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 3000
+var MOVE_SPEED = 3000
 const MAX_SPEED = MOVE_SPEED * 12
-const SHOOT_DELAY = 0.3
+var SHOOT_DELAY = 0.3
 const FRICTION = 10 
 const MAX_HEALTH = 100
-const DAMAGE = 20
+var DAMAGE = 20
 
 onready var bullet_start_position = $BulletStartPosition
 const bullet_scene = preload("res://Player/Bullet/Bullet.tscn")
@@ -17,7 +17,7 @@ var acceleration
 var shoot_delay_timer
 var can_shoot
 var can_sacrifice_souls
-var souls
+var souls = 10
 
 
 func _ready():
@@ -61,16 +61,22 @@ func _handle_shooting():
 		bullet_instance.position = bullet_start_position.get_global_position()
 		bullet_instance.direction = -(self.global_position - get_global_mouse_position()).normalized()
 		bullet_instance.damage = DAMAGE
-		#bullet_instance.apply_impulse(Vector2.ZERO, Vector2(bullet_instance.speed, 0).rotated(rotation))
 		get_tree().get_root().add_child(bullet_instance)
 		yield(get_tree().create_timer(SHOOT_DELAY), "timeout")
 		can_shoot = true
 
 func get_soul():
 	souls += 1
+	
 	print('got soul')
 
 func sacrifice_souls():
 	if souls == 0 or !can_sacrifice_souls:
 		return
-	
+	var god = get_tree().get_nodes_in_group('god')[0]
+	send_soul((god.global_position - global_position).normalized())
+	god.receive_soul()
+	souls -= 1
+
+func send_soul(direction):
+	pass
