@@ -10,17 +10,17 @@ script = ExtResource( 1 )
 position = Vector2( 0, 6 )
 
 [node name="Sound" type="Button" parent="Buttons"]
-margin_left = 2.0
-margin_top = 141.0
-margin_right = 94.0
-margin_bottom = 165.0
+margin_left = -0.332703
+margin_top = -3.6275
+margin_right = 91.6673
+margin_bottom = 20.3725
 text = "Sound"
 
 [node name="Reload" type="Button" parent="Buttons"]
-margin_left = 916.486
-margin_top = 140.051
-margin_right = 1024.49
-margin_bottom = 162.051
+margin_left = 914.153
+margin_top = -3.41016
+margin_right = 1022.16
+margin_bottom = 18.5898
 text = "Reload"
 [connection signal="button_up" from="Buttons/Sound" to="." method="_on_Button2_button_up"]
 [connection signal="button_down" from="Buttons/Reload" to="." method="_on_Button_button_down"]

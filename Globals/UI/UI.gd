@@ -16,4 +16,4 @@ func _on_Button_button_down():
 		SceneLoader.reload_scene()
 
 func _on_Button2_button_up():
-	Globals.can_sound = !Globals.sound
+	Globals.sound = !Globals.sound
