@@ -12,10 +12,11 @@ func _ready():
 
 func _physics_process(delta):
 	time_since_last_spawn += delta
-	if time_since_last_spawn >= Globals.enemy_left_room_spawn_delay:
+	if time_since_last_spawn >= Globals.enemy_left_room_spawn_delay and Globals.alive_enemies <= Globals.max_enemies:
 		var random_spawner_index = randi() % get_child_count()
 		spawn_enemy(get_child(random_spawner_index).position)
 		time_since_last_spawn = 0
+		Globals.alive_enemies += 1
 
 
 func spawn_enemy(position):

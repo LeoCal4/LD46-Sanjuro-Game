@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BulletToWall.wav-935e49de10a0cf6970ce6b528ed18b77.sample"
+
+[deps]
+
+source_file="res://Sounds/BulletToWall.wav"
+dest_files=[ "res://.import/BulletToWall.wav-935e49de10a0cf6970ce6b528ed18b77.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

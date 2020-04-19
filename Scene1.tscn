@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
@@ -6,33 +6,35 @@
 [ext_resource path="res://Floor/FloorDetailTileset.png" type="Texture" id=4]
 [ext_resource path="res://Walls/Walls.tres" type="TileSet" id=5]
 [ext_resource path="res://God/God.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Enemy/BiEnemy.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemy/BigRangedEnemy.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Floor/Column.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Item/Shotgun.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=7]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemy/BiEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemy/BigRangedEnemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Floor/Column.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Item/Armor.tscn" type="PackedScene" id=14]
-[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=15]
-[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=16]
-[ext_resource path="res://LeftRoomEnemySpawner.gd" type="Script" id=17]
-[ext_resource path="res://RightRoomEnemySpawner.gd" type="Script" id=18]
-[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=19]
-[ext_resource path="res://ItemSpawner.gd" type="Script" id=20]
-[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Doors/DoorRight.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Doors/DoorCenter.tscn" type="PackedScene" id=27]
-[ext_resource path="res://RoomBlocks.gd" type="Script" id=28]
+[ext_resource path="res://Item/Shotgun.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Soul/BloodSoul.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Item/HealthPickup.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=21]
+[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=22]
+[ext_resource path="res://LeftRoomEnemySpawner.gd" type="Script" id=23]
+[ext_resource path="res://RightRoomEnemySpawner.gd" type="Script" id=24]
+[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=25]
+[ext_resource path="res://Item/ItemSpawner.gd" type="Script" id=26]
+[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Doors/DoorRight.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Doors/DoorCenter.tscn" type="PackedScene" id=29]
+[ext_resource path="res://RoomBlocks.gd" type="Script" id=30]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -1255.26, 600.689, -1141.28, 549.784, -840.132, 547.884, -747.032, 548.834, -718.109, 593.479, -182.982, 286.084, 695.492, 282.496, 778.594, 284.713, 1015.92, 355.546, 1012.31, 467.303, 775.27, 570.586, 696.6, 570.586, -188.636, 563.937, -266.199, 561.721, -501.806, 402.412, -725.319, 121.218, -710.899, 305.075, -759.382, 227.733, -763.182, 171.683, -714.504, 402.412, -757.482, 494.684, -1255.26, 124.823, -848.682, 167.883, 1012.31, 813.387, 777.486, 625.987, 312.934, 809.782, 698.816, 625.987, 201.178, 806.177, -185.312, 622.663, -1221.08, 549.784, -1222.03, 494.684, 1001.5, 13.0669, 775.27, 228.203, -498.201, 16.6719, 693.276, 229.311, -184.982, 229.083, -261.983, 227.083, 82.2112, 1253.2, -51.1755, 1256.81, -47.5704, 1022.48, 82.2112, 1011.66, 439.111, 1249.6, 78.6061, 957.589, 211.993, 953.984, 312.934, 964.799, 439.111, 1018.87, 568.892, 1245.99, 1235.83, 359.151, 1228.62, -1.3533, 1711.69, 5.85678, 1715.3, 658.37, 1221.41, 665.58, 1225.01, 463.697, -1138.43, 220.133, -847.732, 224.883, -1143.18, 497.534, -1139.38, 165.983, -1218.23, 164.083, -509.016, 319.496, -261.983, 284.084, 568.892, 1018.87, 193.968, 1696.62, 85.8162, 1696.62, -839.182, 493.734, 435.506, 1696.62, 312.934, 1700.23, -1219.18, 219.183, 428.295, 964.799, 287.699, 1765.12, 226.413, 1757.91, -498.201, 798.967, -265.091, 619.339 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ), PoolIntArray( 15, 16, 17, 18 ), PoolIntArray( 19, 4, 3, 20 ), PoolIntArray( 21, 15, 18, 22 ), PoolIntArray( 9, 23, 24, 10 ), PoolIntArray( 24, 23, 25, 26 ), PoolIntArray( 11, 26, 25, 27, 28, 12 ), PoolIntArray( 29, 1, 0 ), PoolIntArray( 29, 0, 21, 30 ), PoolIntArray( 31, 8, 7, 32 ), PoolIntArray( 33, 31, 32, 34, 35, 36 ), PoolIntArray( 37, 38, 39, 40 ), PoolIntArray( 41, 40, 42, 43, 44, 45, 46 ), PoolIntArray( 34, 6, 5, 35 ), PoolIntArray( 47, 48, 49, 50 ), PoolIntArray( 47, 50, 51, 52 ), PoolIntArray( 8, 47, 52, 9 ), PoolIntArray( 53, 22, 54, 55 ), PoolIntArray( 22, 53, 56 ), PoolIntArray( 21, 22, 56, 57 ), PoolIntArray( 58, 33, 36, 59, 14 ), PoolIntArray( 45, 60, 46 ), PoolIntArray( 41, 61, 62, 37, 40 ), PoolIntArray( 63, 2, 1, 55, 54 ), PoolIntArray( 41, 64, 65, 61 ), PoolIntArray( 55, 30, 21, 66 ), PoolIntArray( 44, 67, 45 ), PoolIntArray( 65, 68, 69, 61 ), PoolIntArray( 25, 44, 43, 27 ), PoolIntArray( 28, 27, 70, 71 ), PoolIntArray( 71, 70, 14, 13 ), PoolIntArray( 59, 5, 14 ), PoolIntArray( 58, 14, 19, 16 ), PoolIntArray( 16, 19, 20, 63, 54, 17 ), PoolIntArray( 66, 53, 55 ), PoolIntArray( 66, 21, 57 ) ]
-outlines = [ PoolVector2Array( -261.983, 227.083, -261.983, 284.084, -182.982, 286.084, -184.982, 229.083 ), PoolVector2Array( -266.199, 561.721, -265.091, 619.339, -185.312, 622.663, -188.636, 563.937 ), PoolVector2Array( 693.276, 229.311, 695.492, 282.496, 778.594, 284.713, 775.27, 228.203 ), PoolVector2Array( 696.6, 570.586, 698.816, 625.987, 777.486, 625.987, 775.27, 570.586 ), PoolVector2Array( -1218.23, 164.083, -1219.18, 219.183, -1138.43, 220.133, -1139.38, 165.983 ), PoolVector2Array( -1222.03, 494.684, -1221.08, 549.784, -1141.28, 549.784, -1143.18, 497.534 ), PoolVector2Array( -848.682, 167.883, -847.732, 224.883, -759.382, 227.733, -763.182, 171.683 ), PoolVector2Array( -839.182, 493.734, -840.132, 547.884, -747.032, 548.834, -757.482, 494.684 ), PoolVector2Array( -498.201, 16.6719, 1001.5, 13.0669, 1015.92, 355.546, 1235.83, 359.151, 1228.62, -1.3533, 1711.69, 5.85678, 1715.3, 658.37, 1221.41, 665.58, 1225.01, 463.697, 1012.31, 467.303, 1012.31, 813.387, 312.934, 809.782, 312.934, 964.799, 428.295, 964.799, 439.111, 1018.87, 568.892, 1018.87, 568.892, 1245.99, 439.111, 1249.6, 435.506, 1696.62, 312.934, 1700.23, 287.699, 1765.12, 226.413, 1757.91, 193.968, 1696.62, 85.8162, 1696.62, 82.2112, 1253.2, -51.1755, 1256.81, -47.5704, 1022.48, 82.2112, 1011.66, 78.6061, 957.589, 211.993, 953.984, 201.178, 806.177, -498.201, 798.967, -501.806, 402.412, -714.504, 402.412, -718.109, 593.479, -1255.26, 600.689, -1255.26, 124.823, -725.319, 121.218, -710.899, 305.075, -509.016, 319.496 ) ]
+vertices = PoolVector2Array( -1255.26, 600.689, -1141.28, 549.784, -840.132, 547.884, -747.032, 548.834, -718.109, 593.479, -182.982, 286.084, 695.492, 282.496, 778.594, 284.713, 1007.3, 373.008, 1010.56, 456.087, 775.27, 570.586, 696.6, 570.586, -188.636, 563.937, -266.199, 561.721, -501.806, 402.412, -725.319, 121.218, -718.939, 319.444, -759.382, 227.733, -763.182, 171.683, 1708.28, 22.0359, 1707.76, 648.968, 1668.47, 564.604, 1667.52, 508.553, -714.504, 402.412, -757.482, 494.684, -1255.26, 124.823, -848.682, 167.883, 1012.31, 813.387, 777.486, 625.987, 312.934, 809.782, 698.816, 625.987, 201.178, 806.177, -185.312, 622.663, -1221.08, 549.784, -1222.03, 494.684, 1584.87, 561.754, 1241.11, 650.174, 1360.67, 564.604, 1001.5, 13.0669, 775.27, 228.203, -498.201, 16.6719, 693.276, 229.311, -184.982, 229.083, -261.983, 227.083, 1236.99, 371.379, 1236.92, 17.0453, 1579.17, 504.753, 1361.62, 512.353, 1270.42, 508.553, 1235.74, 461.71, -1138.43, 220.133, -847.732, 224.883, -1143.18, 497.534, -1139.38, 165.983, -1218.23, 164.083, 337.16, 1591.51, 184.839, 1593.1, 199.172, 951.111, 312.934, 964.799, -498.201, 798.967, -265.091, 619.339, -509.016, 319.496, -261.983, 284.084, -839.182, 493.734, 1276.12, 562.704, -1219.18, 219.183 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ), PoolIntArray( 15, 16, 17, 18 ), PoolIntArray( 19, 20, 21, 22 ), PoolIntArray( 23, 4, 3, 24 ), PoolIntArray( 25, 15, 18, 26 ), PoolIntArray( 9, 27, 28, 10 ), PoolIntArray( 28, 27, 29, 30 ), PoolIntArray( 11, 30, 29, 31, 32, 12 ), PoolIntArray( 33, 1, 0 ), PoolIntArray( 33, 0, 25, 34 ), PoolIntArray( 35, 21, 20, 36, 37 ), PoolIntArray( 38, 8, 7, 39 ), PoolIntArray( 40, 38, 39, 41, 42, 43 ), PoolIntArray( 44, 45, 19, 22, 46 ), PoolIntArray( 44, 46, 47, 48, 49 ), PoolIntArray( 41, 6, 5, 42 ), PoolIntArray( 50, 26, 51, 52 ), PoolIntArray( 26, 50, 53 ), PoolIntArray( 25, 26, 53, 54 ), PoolIntArray( 55, 56, 57, 58 ), PoolIntArray( 29, 58, 57, 31 ), PoolIntArray( 32, 31, 59, 60 ), PoolIntArray( 60, 59, 14, 13 ), PoolIntArray( 61, 40, 43, 62, 14 ), PoolIntArray( 63, 2, 1, 52, 51 ), PoolIntArray( 37, 47, 46, 35 ), PoolIntArray( 64, 37, 36 ), PoolIntArray( 64, 36, 49, 48 ), PoolIntArray( 8, 44, 49, 9 ), PoolIntArray( 52, 34, 25, 65 ), PoolIntArray( 62, 5, 14 ), PoolIntArray( 61, 14, 23, 16 ), PoolIntArray( 16, 23, 24, 63, 51, 17 ), PoolIntArray( 65, 50, 52 ), PoolIntArray( 65, 25, 54 ) ]
+outlines = [ PoolVector2Array( -261.983, 227.083, -261.983, 284.084, -182.982, 286.084, -184.982, 229.083 ), PoolVector2Array( -266.199, 561.721, -265.091, 619.339, -185.312, 622.663, -188.636, 563.937 ), PoolVector2Array( 693.276, 229.311, 695.492, 282.496, 778.594, 284.713, 775.27, 228.203 ), PoolVector2Array( 696.6, 570.586, 698.816, 625.987, 777.486, 625.987, 775.27, 570.586 ), PoolVector2Array( -1218.23, 164.083, -1219.18, 219.183, -1138.43, 220.133, -1139.38, 165.983 ), PoolVector2Array( -1222.03, 494.684, -1221.08, 549.784, -1141.28, 549.784, -1143.18, 497.534 ), PoolVector2Array( -848.682, 167.883, -847.732, 224.883, -759.382, 227.733, -763.182, 171.683 ), PoolVector2Array( -839.182, 493.734, -840.132, 547.884, -747.032, 548.834, -757.482, 494.684 ), PoolVector2Array( -498.201, 16.6719, 1001.5, 13.0669, 1007.3, 373.008, 1236.99, 371.379, 1236.92, 17.0453, 1708.28, 22.0359, 1707.76, 648.968, 1241.11, 650.174, 1235.74, 461.71, 1010.56, 456.087, 1012.31, 813.387, 312.934, 809.782, 312.934, 964.799, 337.16, 1591.51, 184.839, 1593.1, 199.172, 951.111, 201.178, 806.177, -498.201, 798.967, -501.806, 402.412, -714.504, 402.412, -718.109, 593.479, -1255.26, 600.689, -1255.26, 124.823, -725.319, 121.218, -718.939, 319.444, -509.016, 319.496 ), PoolVector2Array( 1270.42, 508.553, 1276.12, 562.704, 1360.67, 564.604, 1361.62, 512.353 ), PoolVector2Array( 1579.17, 504.753, 1667.52, 508.553, 1668.47, 564.604, 1584.87, 561.754 ) ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 88.2172, 49.2725 )
@@ -295,214 +297,6 @@ __meta__ = {
 ] instance=ExtResource( 6 )]
 position = Vector2( 783.679, -13.1918 )
 
-[node name="YSort" type="YSort" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Enemy" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 772.417, 488.198 )
-
-[node name="Player" parent="YSort" groups=[
-"player",
-] instance=ExtResource( 8 )]
-position = Vector2( 784.019, 129.036 )
-
-[node name="RangedEnemy" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 125.348, 74.5739 )
-
-[node name="FirstRoomEnemies" type="Node2D" parent="YSort"]
-editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BigEnemy" parent="YSort/FirstRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( -464.167, 200.049 )
-awake = false
-
-[node name="BigEnemy2" parent="YSort/FirstRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( -463.059, 591.186 )
-awake = false
-
-[node name="BigEnemy3" parent="YSort/FirstRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( -213.751, 387.307 )
-awake = false
-
-[node name="RangedEnemy2" parent="YSort/FirstRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( -658.033, 287.317 )
-awake = false
-
-[node name="RangedEnemy3" parent="YSort/FirstRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( -656.925, 393.688 )
-awake = false
-
-[node name="RangedEnemy4" parent="YSort/FirstRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( -655.817, 504.492 )
-awake = false
-
-[node name="SecondRoomEnemies" type="Node2D" parent="YSort"]
-editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="RangedEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( 1774.44, 72.8158 )
-awake = false
-
-[node name="RangedEnemy3" parent="YSort/SecondRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( 1779.71, 670.567 )
-awake = false
-
-[node name="BigRangedEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 1998.84, 440.094 )
-awake = false
-
-[node name="BigRangedEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 1995.14, 255.032 )
-awake = false
-
-[node name="BigRangedEnemy3" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 1995.14, 255.032 )
-awake = false
-
-[node name="BigEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 1988.47, 98.3058 )
-awake = false
-
-[node name="BigEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 2009.99, 662.738 )
-awake = false
-
-[node name="ThirdRoomEnemies" type="Node2D" parent="YSort"]
-editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BigRangedEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 519.458, 1092.85 )
-awake = false
-
-[node name="BigRangedEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 1027.27, 1090.44 )
-awake = false
-
-[node name="BigRangedEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 1034.88, 1253.87 )
-awake = false
-
-[node name="BigRangedEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
-position = Vector2( 525.64, 1259.75 )
-awake = false
-
-[node name="RangedEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( 497.619, 1169.82 )
-awake = false
-
-[node name="RangedEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
-position = Vector2( 1067.55, 1168.39 )
-awake = false
-
-[node name="Enemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 7 )]
-position = Vector2( 628.41, 1409.24 )
-
-[node name="Enemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 7 )]
-position = Vector2( 941.115, 1411.89 )
-
-[node name="BigEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 652.86, 1495 )
-
-[node name="BigEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 902.789, 1495 )
-
-[node name="BigEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 696.03, 1610.88 )
-
-[node name="BigEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 877.796, 1610.88 )
-
-[node name="BigEnemy5" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 10 )]
-position = Vector2( 777.824, 1694.95 )
-
-[node name="Column" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 302.986, 615.556 )
-
-[node name="Column2" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 1264.27, 277.906 )
-
-[node name="Sprite" parent="YSort/Column2" index="0"]
-frame = 1
-
-[node name="Column9" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 1836.12, 103.947 )
-
-[node name="Column10" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 2154.42, 555.499 )
-
-[node name="Column7" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( -277.312, 218.699 )
-
-[node name="Column8" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( -651.613, 545.5 )
-
-[node name="Column3" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 1264.27, 620.148 )
-
-[node name="Column13" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 642.465, 1019.88 )
-
-[node name="Column14" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 942.266, 1271.57 )
-
-[node name="Column18" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 638.764, 1702.76 )
-
-[node name="Column11" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 1847.22, 557.227 )
-
-[node name="Column12" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 2152.57, 109.376 )
-
-[node name="Column4" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 304.834, 277.746 )
-
-[node name="Sprite" parent="YSort/Column4" index="0"]
-frame = 1
-
-[node name="Column15" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 934.045, 1012.44 )
-
-[node name="Column16" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 634.245, 1273.38 )
-
-[node name="Column17" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( 935.896, 1699.02 )
-
-[node name="Column5" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( -269.418, 540.843 )
-
-[node name="Column6" parent="YSort" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( -650.756, 215.648 )
-
-[node name="Shotgun" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 2222.72, 67.7724 )
-
-[node name="Armor" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( -464.889, 397.125 )
-
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation2d",
 ]]
@@ -514,14 +308,13 @@ __meta__ = {
 }
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
-position = Vector2( -69.9209, -139.437 )
+position = Vector2( -70.7783, -141.288 )
 navpoly = SubResource( 1 )
 
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 814.74, 64.8908 )
-script = ExtResource( 15 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -543,15 +336,241 @@ text = "Press E to feed
 align = 1
 valign = 1
 
-[node name="EnemySpawner" parent="." instance=ExtResource( 16 )]
-
-[node name="LeftRoomEnemySpawner" type="Node2D" parent="."]
-editor/display_folded = true
-script = ExtResource( 17 )
+[node name="YSort" type="YSort" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
-enemies = [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 9 ) ]
+
+[node name="Enemy" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 772.417, 488.198 )
+
+[node name="Player" parent="YSort" groups=[
+"player",
+] instance=ExtResource( 9 )]
+position = Vector2( 802.196, 158.573 )
+
+[node name="RangedEnemy" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 125.348, 74.5739 )
+
+[node name="FirstRoomEnemies" type="Node2D" parent="YSort"]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BigEnemy" parent="YSort/FirstRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( -464.167, 200.049 )
+awake = false
+
+[node name="BigEnemy2" parent="YSort/FirstRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( -463.059, 591.186 )
+awake = false
+
+[node name="BigEnemy3" parent="YSort/FirstRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( -213.751, 387.307 )
+awake = false
+
+[node name="RangedEnemy2" parent="YSort/FirstRoomEnemies" instance=ExtResource( 10 )]
+position = Vector2( -658.033, 309.756 )
+awake = false
+
+[node name="RangedEnemy3" parent="YSort/FirstRoomEnemies" instance=ExtResource( 10 )]
+position = Vector2( -653.83, 409.164 )
+awake = false
+
+[node name="RangedEnemy4" parent="YSort/FirstRoomEnemies" instance=ExtResource( 10 )]
+position = Vector2( -655.817, 504.492 )
+awake = false
+
+[node name="SecondRoomEnemies" type="Node2D" parent="YSort"]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RangedEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1907.57, 422.933 )
+awake = false
+
+[node name="RangedEnemy3" parent="YSort/SecondRoomEnemies" instance=ExtResource( 10 )]
+position = Vector2( 1950.58, 308.118 )
+awake = false
+
+[node name="BigRangedEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 2178.68, 426.589 )
+awake = false
+
+[node name="BigRangedEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 1727.61, 444.152 )
+awake = false
+
+[node name="BigRangedEnemy3" parent="YSort/SecondRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 2053.75, 406.211 )
+awake = false
+
+[node name="BigEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 2010.57, 501.005 )
+awake = false
+
+[node name="BigEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 2158.63, 314.147 )
+awake = false
+
+[node name="ThirdRoomEnemies" type="Node2D" parent="YSort"]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BigRangedEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 777.637, 983.11 )
+awake = false
+
+[node name="BigRangedEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 783.521, 1193.77 )
+awake = false
+
+[node name="BigRangedEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 824.69, 1238.7 )
+awake = false
+
+[node name="BigRangedEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+position = Vector2( 826.467, 1146.5 )
+awake = false
+
+[node name="BigEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 825.242, 1033.51 )
+awake = false
+
+[node name="BigEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 738.659, 1032.66 )
+awake = false
+
+[node name="BigEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 744.888, 1138.22 )
+awake = false
+
+[node name="BigEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 786.501, 1087.62 )
+awake = false
+
+[node name="BigEnemy5" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+position = Vector2( 742.756, 1240.44 )
+awake = false
+
+[node name="Column" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 302.986, 615.556 )
+
+[node name="Column2" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 1264.27, 277.906 )
+
+[node name="Sprite" parent="YSort/Column2" index="0"]
+frame = 1
+
+[node name="Column9" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 1902.12, 154.275 )
+
+[node name="Column10" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 2154.42, 555.499 )
+
+[node name="Column7" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( -277.312, 218.699 )
+
+[node name="Column8" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( -651.613, 545.5 )
+
+[node name="Column3" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1264.27, 620.148 )
+
+[node name="Column13" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 642.465, 1019.88 )
+
+[node name="Column14" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 942.266, 1271.57 )
+
+[node name="Column18" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 638.764, 1702.76 )
+
+[node name="Column11" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1847.22, 557.227 )
+
+[node name="Column12" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 2097.94, 155.805 )
+
+[node name="Column4" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 304.834, 277.746 )
+
+[node name="Sprite" parent="YSort/Column4" index="0"]
+frame = 1
+
+[node name="Column15" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 934.045, 1012.44 )
+
+[node name="Column16" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 634.245, 1273.38 )
+
+[node name="Column17" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( 935.896, 1699.02 )
+
+[node name="Column5" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( -269.418, 540.843 )
+
+[node name="Column6" parent="YSort" instance=ExtResource( 13 )]
+editor/display_folded = true
+position = Vector2( -650.756, 215.648 )
+
+[node name="Armor" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( -464.889, 397.125 )
+
+[node name="Shotgun" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 2214.41, 73.09 )
+
+[node name="BloodSoul" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 782.836, 1765.19 )
+
+[node name="Node2D" type="Node2D" parent="YSort"]
+
+[node name="Boots" parent="YSort/Node2D" instance=ExtResource( 17 )]
+position = Vector2( 990.626, 311.275 )
+scale = Vector2( 1.3, 1.3 )
+
+[node name="Armor" parent="YSort/Node2D" instance=ExtResource( 14 )]
+position = Vector2( 620.277, 279.465 )
+
+[node name="Bow" parent="YSort/Node2D" instance=ExtResource( 18 )]
+position = Vector2( 797.499, 293.098 )
+
+[node name="DamageUp" parent="YSort/Node2D" instance=ExtResource( 19 )]
+position = Vector2( 920.191, 188.582 )
+
+[node name="HealthPickup" parent="YSort/Node2D" instance=ExtResource( 20 )]
+position = Vector2( 636.181, 152.229 )
+
+[node name="Shotgun" parent="YSort/Node2D" instance=ExtResource( 15 )]
+position = Vector2( 938.368, 90.8831 )
+
+[node name="SoulContainer" parent="YSort/Node2D" instance=ExtResource( 21 )]
+position = Vector2( 722.52, 224.936 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 22 )]
+
+[node name="LeftRoomEnemySpawner" type="Node2D" parent="."]
+editor/display_folded = true
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
+enemies = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 10 ) ]
 
 [node name="Position2D" type="Position2D" parent="LeftRoomEnemySpawner"]
 position = Vector2( -593.776, 287.029 )
@@ -579,17 +598,17 @@ position = Vector2( -336.493, 510.497 )
 
 [node name="RightRoomEnemySpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 18 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
-enemies = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 9 ) ]
+enemies = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 10 ) ]
 
 [node name="Position2D" type="Position2D" parent="RightRoomEnemySpawner"]
-position = Vector2( 2094.47, 174.369 )
+position = Vector2( 2090.97, 254.678 )
 
 [node name="Position2D2" type="Position2D" parent="RightRoomEnemySpawner"]
-position = Vector2( 1903.34, 174.4 )
+position = Vector2( 1911.51, 253.712 )
 
 [node name="Position2D3" type="Position2D" parent="RightRoomEnemySpawner"]
 position = Vector2( 2095.57, 342.516 )
@@ -604,17 +623,17 @@ position = Vector2( 2096.98, 511.044 )
 position = Vector2( 1901.95, 510.011 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 19 )
+stream = ExtResource( 25 )
 volume_db = -15.0
 autoplay = true
 
 [node name="ItemSpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 20 )
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_lock_": true
 }
-items = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ]
+items = [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 21 ) ]
 
 [node name="Position2D" type="Position2D" parent="ItemSpawner"]
 position = Vector2( 44.4336, 843.116 )
@@ -623,28 +642,29 @@ position = Vector2( 44.4336, 843.116 )
 position = Vector2( 1520.88, 844.786 )
 
 [node name="Doors" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Door" parent="Doors" groups=[
 "door1",
-] instance=ExtResource( 25 )]
+] instance=ExtResource( 27 )]
 position = Vector2( 8.07132, 386.057 )
 
 [node name="DoorRight" parent="Doors" groups=[
 "door2",
-] instance=ExtResource( 26 )]
+] instance=ExtResource( 28 )]
 position = Vector2( 1560.73, 459.214 )
 scale = Vector2( 1.17641, 1 )
 souls_needed = 30
 
 [node name="DoorCenter" parent="Doors" groups=[
 "door3",
-] instance=ExtResource( 27 )]
+] instance=ExtResource( 29 )]
 position = Vector2( 776.621, 873.958 )
 scale = Vector2( 1.20002, 1 )
 souls_needed = 50
 
 [node name="RoomBlocks" type="Node2D" parent="."]
-script = ExtResource( 28 )
+script = ExtResource( 30 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -655,7 +675,6 @@ scale = Vector2( 51.6358, 51.8748 )
 texture = ExtResource( 3 )
 
 [node name="Shadow2" type="Sprite" parent="RoomBlocks"]
-visible = false
 position = Vector2( 1982.64, 411.123 )
 scale = Vector2( 51.6358, 51.8748 )
 texture = ExtResource( 3 )

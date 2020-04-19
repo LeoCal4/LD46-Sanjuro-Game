@@ -107,4 +107,15 @@ texture = ExtResource( 6 )
 vframes = 4
 hframes = 4
 frame = 11
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+width = 5.0
+default_color = Color( 1, 0, 0, 1 )
+texture_mode = 0
 [connection signal="body_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_body_entered"]

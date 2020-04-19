@@ -54,9 +54,10 @@ func search(delta):
 		if !SceneLoader.is_loading_scene:
 			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	if !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path") or (target.global_position.distance_to(starting_point)) >= 1000:
+	if !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path") or (target.global_position.distance_to(starting_point)) >= 700:
 		return
 	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
+	$Label.text = str(path_to_player.size())
 	var move_distance = MOVE_SPEED * delta
 	for point in range(path_to_player.size()):
 		var distance_to_next_point = starting_point.distance_to(path_to_player[point])
@@ -97,6 +98,8 @@ func receive_damage(damage_received, knockback_direction, source):
 func die():
 	spawn_souls()
 	Globals.add_enemy_killed()
+	while ($DamageSound.is_playing()):
+		yield(get_tree(), 'idle_frame')
 	queue_free()
 
 func spawn_souls():

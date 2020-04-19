@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/CharacterTileset.png" type="Texture" id=2]
@@ -6,12 +6,80 @@
 [ext_resource path="res://Sounds/PlayerShoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/PlayerDamage.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/PickSoul.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/SoulAbsorbed.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/EvilLaugh.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.53317
 height = 11.3728
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SoulsParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.796078, 0.796078, 0.796078, 1 ), Color( 0.698039, 0.698039, 0.698039, 1 ), Color( 0.576471, 0.576471, 0.576471, 1 ), Color( 0.364706, 0.364706, 0.364706, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 22.0, 44.0, 66.0, 90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 2 ), Vector2( 0, 4 ), Vector2( 0, 5 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 resource_name = "move"
 length = 0.4
 tracks/0/type = "value"
@@ -26,6 +94,10 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.97351 )
+colors = PoolColorArray( 0.131912, 0.320641, 0.371094, 1, 1, 1, 1, 0.470588 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 6
@@ -100,4 +172,27 @@ volume_db = -10.0
 pitch_scale = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/move = SubResource( 2 )
+anims/death = SubResource( 4 )
+anims/move = SubResource( 5 )
+
+[node name="SoulsParticles" type="CPUParticles2D" parent="."]
+position = Vector2( -0.366261, 11.354 )
+emitting = false
+amount = 1
+lifetime = 0.5
+speed_scale = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( -5, 1 )
+gravity = Vector2( 0, -90 )
+radial_accel = 50.0
+scale_amount = 3.0
+color_ramp = SubResource( 3 )
+
+[node name="OfferSoul" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="EvilLaugh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0

@@ -7,6 +7,8 @@ var enemy_left_room_spawn_delay = 10
 var item_spawn_delay = 15
 var enemies_killed = 0
 var decay_multiplicator = 1
+var alive_enemies = 0
+var max_enemies = 25
 
 func add_enemy_killed():
 	enemies_killed += 1

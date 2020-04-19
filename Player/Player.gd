@@ -25,6 +25,7 @@ onready var health_bar = get_node('/root/UI').get_child(3)
 onready var souls_label = get_node('/root/UI').get_child(4)
 onready var sprite = $Sprite
 onready var shoot_sound = $ShootSound
+onready var souls_particles = $SoulsParticles
 const bullet_scene = preload("res://Player/Bullet/Bullet.tscn")
 
 var health = max_health
@@ -42,6 +43,7 @@ var can_donate_souls_to_door3 = false
 var is_berserk = false
 var has_armor = false
 var has_shotgun = false
+var has_golden_soul = false
 
 func _ready():
 	health = max_health
@@ -140,6 +142,10 @@ func sacrifice_souls():
 	if souls == 0 or !can_sacrifice_souls:
 		return
 	var god = get_tree().get_nodes_in_group('god')[0]
+	if has_golden_soul:
+		SceneLoader.win()
+	if Globals.sound:
+		$OfferSoul.play()
 	god.receive_soul()
 	change_stats(-1)
 	set_souls(-1)
@@ -182,6 +188,8 @@ func set_max_souls(amount):
 
 func activate_berserk_mode():
 	if !is_berserk and $BerserkTimer.time_left <= 0:
+		if Globals.audio:
+			$EvilLaugh.play()
 		$BerserkTimer.wait_time = 10
 		is_berserk = true
 		change_stats(15)
@@ -209,12 +217,24 @@ func set_hp(amount):
 	health += amount
 	health_bar.value = health
 	if health <= 0:
+		set_physics_process(false)
 		can_move = false
-		SceneLoader.reload_scene()
+		$AnimationPlayer.play("death")
+
+func death():
+	velocity = Vector2()
+	acceleration = Vector2()
+	knockback = Vector2()
+	SceneLoader.reload_scene()
 
 func set_souls(amount):
 	souls += amount
 	update_souls_label()
+	if souls == 0:
+		souls_particles.emitting = false
+	else:
+		souls_particles.emitting = true
+		souls_particles.amount = souls
 
 func update_souls_label():
 	souls_label.text = str(souls) + " / " + str(max_souls)

@@ -5,6 +5,24 @@ var is_loading_scene = false
 onready var UI = get_node('/root/UI')
 onready var fade_player = get_node('/root/Shaders').get_child(0).get_child(0).get_child(0)
 
+func win():
+	call_deferred('_deferred_win')
+
+func _deferred_win():
+	is_loading_scene = true
+	_disable_ui()
+	fade_player.play("fade")
+	get_tree().get_current_scene().free()
+	yield(fade_player, 'animation_finished')
+	fade_player.play_backwards("fade")
+	var scene = ResourceLoader.load("res://Globals/Win.tscn").instance()
+	yield(fade_player, 'animation_finished')
+	fade_player.play_backwards("fade")
+	get_tree().get_root().add_child(scene)
+	get_tree().set_current_scene(scene)
+	yield(fade_player, 'animation_finished')
+	is_loading_scene = false
+
 
 func reload_scene():
 	is_loading_scene = true
