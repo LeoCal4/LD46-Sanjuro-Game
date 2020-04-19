@@ -171,8 +171,6 @@ func set_move_speed(amount):
 	move_speed = clamp(move_speed + amount, base_move_speed, max_move_speed)
 
 func set_damage(amount):
-	if has_armor:
-		amount /= 2
 	damage = clamp(damage + amount, base_damage, max_damage)
 
 func set_shoot_delay(amount):
@@ -195,6 +193,8 @@ func deactivate_berserk_mode():
 		$BerserkTimer.start()
 
 func receive_damage(amount, knockback_direction, source):
+	if has_armor:
+		amount /= 2
 	set_hp(-amount)
 	knockback = knockback_direction * KNOCKBACK
 	sprite.visible = false

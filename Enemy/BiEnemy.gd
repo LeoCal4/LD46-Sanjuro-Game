@@ -3,6 +3,7 @@ extends "res://Enemy/Enemy.gd"
 
 func _ready():
 	collision_shape = $CollisionShape2D2
+	move_animation = 'big_move'
 	hp = 350
 	damage = 30
 

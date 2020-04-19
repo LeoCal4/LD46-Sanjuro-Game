@@ -24,3 +24,11 @@ func spawn_enemy(position):
 	var enemy = enemy_scene.instance()
 	enemy.position = position
 	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', enemy)
+
+
+func _on_Door_open_door():
+	enemies.append(load('res://Enemy/BiEnemy.tscn'))
+
+
+func _on_DoorRight_open_door():
+	enemies.append(load('res://Enemy/BigRangedEnemy.tscn'))

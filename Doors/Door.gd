@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+signal open_door
+
 var souls = 0
 export var souls_needed = 15
 
@@ -23,4 +25,5 @@ func receive_soul():
 	souls += 1
 	$Label.text = "Needed:\n" + str(souls_needed - souls) + " souls"
 	if souls >= souls_needed:
+		emit_signal('open_door')
 		queue_free()

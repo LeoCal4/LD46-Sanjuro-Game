@@ -17,12 +17,14 @@ onready var collision_shape = $CollisionShape2D
 var target
 var hp = FULL_HP setget set_hp
 export var damage = 20
+export var awake = true
 var motion 
 var acceleration
 var knockback
 var can_move = false
 var can_attack = false
 var can_be_damaged = false
+var move_animation = 'move'
 
 signal camera_shake_requested
 
@@ -35,6 +37,8 @@ func _ready():
 	collision_shape.disabled = true
 	if !map_navigation:
 		map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
+	if awake:
+		anim_player.play("spawn")
 
 func _physics_process(delta):
 	if target == null:
@@ -70,7 +74,7 @@ func search(delta):
 		
 
 func play_move_animation():
-	anim_player.play('move')
+	anim_player.play(move_animation)
 
 
 func receive_damage(damage_received, knockback_direction, source):
@@ -121,3 +125,7 @@ func complete_spawn():
 	$Spawn.visible = false
 	sprite.visible = true
 	$Shadow.visible = true
+
+func wake():
+	awake = true
+	anim_player.play("spawn")
