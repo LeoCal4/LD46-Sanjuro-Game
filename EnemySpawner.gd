@@ -23,4 +23,4 @@ func spawn_enemy(position):
 	var enemy_scene = enemies.front()
 	var enemy = enemy_scene.instance()
 	enemy.position = position
-	get_tree().get_root().call_deferred('add_child', enemy)
+	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', enemy)

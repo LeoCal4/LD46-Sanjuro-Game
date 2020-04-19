@@ -1,6 +1,9 @@
-extends Node2D
+extends StaticBody2D
 
 const MAX_HEALTH = 100
+
+var soul_container_scene = preload("res://Item/SoulContainer.tscn")
+var health_scene = preload("res://Item/HealthPickup.tscn")
 
 onready var label = $Label
 onready var sprite = $Sprite
@@ -14,9 +17,11 @@ var angle = 0
 var current_frame = 1
 var hp = MAX_HEALTH / 2 setget set_hp
 var time_passed = 0
+var souls_received = 0
 
 func _ready():
-	center = position
+	center = $Sprite.position
+	randomize()
 
 func _physics_process(delta):
 	time_passed += delta
@@ -24,7 +29,7 @@ func _physics_process(delta):
 		set_hp(-time_passed * Globals.decay_multiplicator)
 		time_passed = 0
 	angle += rotation_speed * delta
-	position = center + Vector2(sin(angle/2), cos(angle) * radius)
+	$Sprite.position = center + Vector2(sin(angle/2), cos(angle) * radius)
 
 func set_hp(amount):
 	check_berserk(amount)
@@ -58,3 +63,24 @@ func receive_soul():
 	set_hp(5)
 	soul_particles.emitting = false
 	sprite.frame = current_frame
+	souls_received += 1
+	handle_item_spawn()
+
+func handle_item_spawn():
+	if souls_received % 15 == 0:
+		spawn_soul_container()
+	elif souls_received % 5 == 0:
+		if randf() >= 0.4:
+			spawn_health()
+
+func spawn_soul_container():
+	var soul_container = soul_container_scene.instance()
+	soul_container.global_position = $ItemSpawnPosition.global_position
+	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', soul_container)
+	print('spawned soul container')
+
+func spawn_health():
+	var health = health_scene.instance()
+	health.global_position = $ItemSpawnPosition.global_position
+	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', health)
+	print('spawned health')

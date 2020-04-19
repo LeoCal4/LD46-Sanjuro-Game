@@ -87,7 +87,7 @@ func receive_damage(damage, knockback_direction, source):
 func die():
 	var soul = soul_scene.instance()
 	soul.position = position
-	get_tree().get_root().call_deferred('add_child', soul)
+	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', soul)
 	Globals.add_enemy_killed()
 	queue_free()
 

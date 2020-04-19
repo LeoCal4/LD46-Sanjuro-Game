@@ -30,7 +30,7 @@ func _process(delta):
 			bullet.direction = direction
 			bullet.parent = self
 			bullet.damage = bullet_damage
-			get_tree().get_root().add_child(bullet)
+			get_tree().get_root().get_node("/root/Scene1/YSort/").add_child(bullet)
 			if Globals.sound:
 				$ShootSound.play()
 			time = 0

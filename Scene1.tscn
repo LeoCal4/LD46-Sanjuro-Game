@@ -1,16 +1,23 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Walls/Walls.tres" type="TileSet" id=4]
-[ext_resource path="res://God/God.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=9]
-[ext_resource path="res://EnemySpawner.gd" type="Script" id=10]
-[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=11]
+[ext_resource path="res://Floor/FloorDetailTileset.png" type="Texture" id=4]
+[ext_resource path="res://Walls/Walls.tres" type="TileSet" id=5]
+[ext_resource path="res://God/God.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Floor/Column.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=11]
+[ext_resource path="res://EnemySpawner.gd" type="Script" id=12]
+[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=13]
+[ext_resource path="res://ItemSpawner.gd" type="Script" id=14]
+[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=18]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -500.527, 9.47507, 1014.5, 6.90161, 1015.97, 826.165, -505.241, 828.016 )
@@ -22,6 +29,9 @@ extents = Vector2( 88.2172, 49.2725 )
 
 [node name="Scene1" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Floor" type="TileMap" parent="."]
 position = Vector2( 528.042, 34.0734 )
@@ -46,11 +56,110 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Candles" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Candle" type="Sprite" parent="Candles"]
+position = Vector2( 697.416, 52.0112 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle9" type="Sprite" parent="Candles"]
+position = Vector2( 697.416, 89.0112 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle2" type="Sprite" parent="Candles"]
+position = Vector2( 697.677, 64.5431 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle7" type="Sprite" parent="Candles"]
+position = Vector2( 697.677, 100.543 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle3" type="Sprite" parent="Candles"]
+position = Vector2( 697.817, 77.5512 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle8" type="Sprite" parent="Candles"]
+position = Vector2( 697.817, 113.551 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle4" type="Sprite" parent="Candles"]
+position = Vector2( 873.055, 64.3167 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle10" type="Sprite" parent="Candles"]
+position = Vector2( 873.055, 101.317 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle6" type="Sprite" parent="Candles"]
+position = Vector2( 872.794, 51.7847 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle12" type="Sprite" parent="Candles"]
+position = Vector2( 872.794, 88.7847 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle5" type="Sprite" parent="Candles"]
+position = Vector2( 873.194, 77.3248 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Candle11" type="Sprite" parent="Candles"]
+position = Vector2( 873.194, 114.325 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+frame = 2
+
 [node name="Walls" type="TileMap" parent="." groups=[
 "walls",
 ]]
 position = Vector2( 528.042, 34.0734 )
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 0
@@ -62,31 +171,45 @@ __meta__ = {
 
 [node name="God" parent="." groups=[
 "god",
-] instance=ExtResource( 5 )]
+] instance=ExtResource( 6 )]
 position = Vector2( 783.679, -13.1918 )
 
-[node name="FloorDetails" type="TileMap" parent="."]
-scale = Vector2( 1.5, 1.5 )
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 32, 40 )
-cell_y_sort = true
-collision_layer = 4
-collision_mask = 0
-format = 1
-tile_data = PoolIntArray( 65542, 8, 0, 65565, 9, 0, 327686, 8, 0, 327696, 9, 0, 327709, 8, 0, 655366, 9, 0, 655376, 8, 0, 655389, 9, 0 )
-
 [node name="YSort" type="YSort" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Enemy" parent="YSort" instance=ExtResource( 6 )]
+[node name="Enemy" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 772.417, 488.198 )
 
 [node name="Player" parent="YSort" groups=[
 "player",
-] instance=ExtResource( 7 )]
+] instance=ExtResource( 8 )]
 position = Vector2( 784.019, 129.036 )
 
-[node name="RangedEnemy" parent="YSort" instance=ExtResource( 8 )]
+[node name="RangedEnemy" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 125.348, 74.5739 )
+
+[node name="Column" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 302.986, 615.556 )
+
+[node name="Column2" parent="YSort" instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 1264.27, 277.906 )
+
+[node name="Sprite" parent="YSort/Column2" index="0"]
+frame = 1
+
+[node name="Column3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1264.27, 620.148 )
+
+[node name="Column4" parent="YSort" instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 304.834, 277.746 )
+
+[node name="Sprite" parent="YSort/Column4" index="0"]
+frame = 1
 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation2d",
@@ -104,7 +227,7 @@ navpoly = SubResource( 1 )
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 814.74, 64.8908 )
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -112,11 +235,17 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SoulSacrificeArea"]
 position = Vector2( -29.7478, -0.710938 )
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 10 )
-enemies = [ ExtResource( 6 ), ExtResource( 8 ) ]
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+enemies = [ ExtResource( 7 ), ExtResource( 9 ) ]
 
 [node name="Position2D" type="Position2D" parent="EnemySpawner"]
 position = Vector2( 175.106, 174.626 )
@@ -257,8 +386,22 @@ position = Vector2( 1137.13, 173.148 )
 position = Vector2( 1069.29, 290.721 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 13 )
 volume_db = -15.0
 autoplay = true
+
+[node name="ItemSpawner" type="Node2D" parent="."]
+script = ExtResource( 14 )
+items = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ]
+
+[node name="Position2D" type="Position2D" parent="ItemSpawner"]
+position = Vector2( 44.4336, 843.116 )
+
+[node name="Position2D2" type="Position2D" parent="ItemSpawner"]
+position = Vector2( 1520.88, 844.786 )
 [connection signal="body_entered" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_entered"]
 [connection signal="body_exited" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_exited"]
+
+[editable path="YSort/Column2"]
+
+[editable path="YSort/Column4"]

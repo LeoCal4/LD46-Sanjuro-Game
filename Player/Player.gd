@@ -3,7 +3,7 @@ extends KinematicBody2D
 const FRICTION = 10
 const KNOCKBACK = 100
 
-var max_souls = 3
+var max_souls = 10
 var base_damage = 20
 var max_damage = 100
 var base_move_speed = 3000
@@ -53,7 +53,15 @@ func _ready():
 		health_bar.value = 100
 	if (is_instance_valid(souls_label)):
 		update_souls_label()
-	
+	get_soul()
+	get_soul()
+	get_soul()
+	get_soul()
+	get_soul()
+	get_soul()
+	get_soul()
+	get_soul()
+
 
 func _physics_process(delta):
 	_handle_movement_input()
@@ -93,7 +101,7 @@ func _handle_shooting():
 		bullet_instance.damage = damage
 		bullet_instance.parent = self
 		bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 100)
-		get_tree().get_root().add_child(bullet_instance)
+		get_tree().get_root().get_node("/root/Scene1/YSort").add_child(bullet_instance)
 		if Globals.sound:
 			shoot_sound.play()
 		yield(get_tree().create_timer(shoot_delay), "timeout")

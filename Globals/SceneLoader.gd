@@ -38,6 +38,7 @@ func _deferred_load_scene(scene_path):
 
 
 func _disable_ui():
+	Globals.reset_stats()
 	UI.disable_buttons()
 	for enemy in get_tree().get_nodes_in_group('enemies'):
 		enemy.queue_free()
