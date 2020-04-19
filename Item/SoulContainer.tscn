@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Item/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SoulContainer.gd" type="Script" id=2]
+
+[node name="SoulContainer" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+frame = 3
+[connection signal="body_entered" from="." to="." method="_on_SoulContainer_body_entered"]

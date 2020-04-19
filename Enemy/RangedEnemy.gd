@@ -1,9 +1,6 @@
 extends "Enemy.gd"
 
-var can_attack = false
 var bullet_scene = preload("res://Enemy/EnemyBullet/EnemyBullet.tscn")
-
-
 
 var bullet_damage = 15
 var shooting_delay = 1
@@ -22,7 +19,7 @@ func _process(delta):
 		if !SceneLoader.is_loading_scene:
 			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	if (target.global_position.distance_to(global_position)) >= 200 and time >= shooting_delay:
+	if (target.global_position.distance_to(global_position)) >= 200 and time >= shooting_delay and can_attack:
 		var direction = (target.global_position - global_position).normalized()
 		raycast.cast_to = direction * 200
 		raycast.force_raycast_update()

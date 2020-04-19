@@ -52,7 +52,7 @@ func _ready():
 	if (is_instance_valid(health_bar)):
 		health_bar.value = 100
 	if (is_instance_valid(souls_label)):
-		souls_label.text = str(souls) + " / " + str(max_souls)
+		update_souls_label()
 	
 
 func _physics_process(delta):
@@ -88,9 +88,11 @@ func _handle_shooting():
 		can_shoot = false
 		var bullet_instance = bullet_scene.instance()
 		bullet_instance.position = bullet_start_position.get_global_position()
-		bullet_instance.direction = -(self.global_position - get_global_mouse_position()).normalized()
+		bullet_instance.direction = (get_global_mouse_position() - position).normalized()
+		bullet_instance.rotation = atan2(bullet_instance.direction.y, bullet_instance.direction.x)
 		bullet_instance.damage = damage
 		bullet_instance.parent = self
+		bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 100)
 		get_tree().get_root().add_child(bullet_instance)
 		if Globals.sound:
 			shoot_sound.play()
@@ -104,7 +106,6 @@ func get_soul():
 		$PickSoulSound.play()
 	set_souls(1)
 	change_stats(1)
-	print('got soul')
 
 func sacrifice_souls():
 	if souls == 0 or !can_sacrifice_souls:
@@ -116,11 +117,23 @@ func sacrifice_souls():
 
 # factor: number of souls and if they're lost or gained
 func change_stats(factor):
-	damage = clamp(damage + 5 * factor, base_damage, max_damage)
-	move_speed = clamp(move_speed + 150 * factor, base_move_speed, max_move_speed)
-	shoot_delay = clamp(shoot_delay - 0.02 * factor, min_shoot_delay, base_shoot_delay) 
+	set_damage(5 * factor)
+	set_move_speed(150 * factor)
+	set_shoot_delay(0.02 * factor) 
 	scale = scale + Vector2(0.1, 0.1) * factor
-	print('stats changed: ' + str(factor))
+
+func set_move_speed(amount):
+	move_speed = clamp(move_speed + amount, base_move_speed, max_move_speed)
+
+func set_damage(amount):
+	damage = clamp(damage + amount, base_damage, max_damage)
+
+func set_shoot_delay(amount):
+	shoot_delay = clamp(shoot_delay - amount, min_shoot_delay, base_shoot_delay) 
+
+func set_max_souls(amount):
+	max_souls += amount
+	update_souls_label()
 
 func activate_berserk_mode():
 	if !is_berserk and $BerserkTimer.time_left <= 0:
@@ -154,4 +167,7 @@ func set_hp(amount):
 
 func set_souls(amount):
 	souls += amount
+	update_souls_label()
+
+func update_souls_label():
 	souls_label.text = str(souls) + " / " + str(max_souls)

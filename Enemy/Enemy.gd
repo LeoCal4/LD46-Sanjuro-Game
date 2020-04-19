@@ -19,6 +19,9 @@ var damage = 20
 var motion
 var acceleration
 var knockback
+var can_move = false
+var can_attack = false
+var can_be_damaged = false
 
 signal camera_shake_requested
 
@@ -28,13 +31,15 @@ func _ready():
 	acceleration = Vector2.ZERO
 	knockback = Vector2.ZERO
 	connect("camera_shake_requested", get_tree().get_nodes_in_group('camera')[0], 'shake')
+	$CollisionShape2D.disabled = true
 	if !map_navigation:
 		map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
 
 func _physics_process(delta):
 	if target == null:
 		target = get_tree().get_nodes_in_group('player')[0]
-	search(delta)
+	if can_move:
+		search(delta)
 	if knockback != Vector2():
 		knockback = knockback.linear_interpolate(Vector2(), 0.5)
 
@@ -44,7 +49,7 @@ func search(delta):
 		if !SceneLoader.is_loading_scene:
 			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	if (target.global_position.distance_to(starting_point)) >= 500 or !is_instance_valid(map_navigation):
+	if (target.global_position.distance_to(starting_point)) >= 500 or !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path"):
 		return
 	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
 	var move_distance = MOVE_SPEED * delta
@@ -63,6 +68,8 @@ func search(delta):
 		anim_player.play('move')
 
 func receive_damage(damage, knockback_direction, source):
+	if !can_be_damaged:
+		return
 	target = source
 	if Globals.sound:
 		$DamageSound.play()
@@ -90,7 +97,18 @@ func set_hp(damage):
 		die()
 
 func _on_PlayerHitArea_body_entered(body):
+	if !can_attack:
+		return
 	if body == target:
 		var knockback_direction = (body.global_position - global_position).normalized()
 		body.receive_damage(damage, knockback_direction, self)
 		knockback -= knockback_direction * KNOCKBACK
+
+func complete_spawn():
+	can_attack = true
+	can_move = true
+	can_be_damaged = true
+	$CollisionShape2D.disabled = false
+	$Spawn.visible = false
+	$Sprite.visible = true
+	$Shadow.visible = true

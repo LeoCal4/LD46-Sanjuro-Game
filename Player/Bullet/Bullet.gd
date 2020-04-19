@@ -9,6 +9,7 @@ func _physics_process(delta):
 	position += direction * speed
 
 func _on_Bullet_body_entered(body):
+	set_physics_process(false)
 	if body.is_in_group('enemies'):
 		body.receive_damage(damage, (body.global_position - self.global_position).normalized(), parent)
-	queue_free()
+	$AnimationPlayer.play("explode")

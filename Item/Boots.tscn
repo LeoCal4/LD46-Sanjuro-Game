@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Item/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Boots.gd" type="Script" id=2]
+
+[node name="Boots" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0.552227, 0.552227 )
+scale = Vector2( 1.05522, 1.05522 )
+frame = 1
+[connection signal="body_entered" from="." to="." method="_on_Boots_body_entered"]
