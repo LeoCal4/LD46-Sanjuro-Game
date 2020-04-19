@@ -69,14 +69,6 @@ step = 1.0
 value = 100.0
 percent_visible = false
 
-[node name="SoulSacrificeLabel" type="Label" parent="."]
-visible = false
-margin_left = -47.3189
-margin_top = -33.6378
-margin_right = 47.6811
-margin_bottom = -19.6378
-text = "Press E to feed"
-
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0

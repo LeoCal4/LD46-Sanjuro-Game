@@ -3,7 +3,7 @@ extends KinematicBody2D
 const FRICTION = 10
 const KNOCKBACK = 100
 
-var max_souls = 10
+var max_souls = 3
 var base_damage = 20
 var max_damage = 100
 var base_move_speed = 3000
@@ -24,7 +24,6 @@ onready var damage_sprite = $DamageSprite
 onready var health_bar = get_node('/root/UI').get_child(3)
 onready var souls_label = get_node('/root/UI').get_child(4)
 onready var sprite = $Sprite
-onready var soul_sacrifice_label = $SoulSacrificeLabel
 onready var shoot_sound = $ShootSound
 const bullet_scene = preload("res://Player/Bullet/Bullet.tscn")
 
@@ -37,6 +36,9 @@ var shoot_delay_timer
 var can_move = true
 var can_shoot
 var can_sacrifice_souls = false
+var can_donate_souls_to_door1 = false
+var can_donate_souls_to_door2 = false
+var can_donate_souls_to_door3 = false
 var is_berserk = false
 
 func _ready():
@@ -53,14 +55,6 @@ func _ready():
 		health_bar.value = 100
 	if (is_instance_valid(souls_label)):
 		update_souls_label()
-	get_soul()
-	get_soul()
-	get_soul()
-	get_soul()
-	get_soul()
-	get_soul()
-	get_soul()
-	get_soul()
 
 
 func _physics_process(delta):
@@ -71,9 +65,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed('action'):
 		if can_sacrifice_souls:
 			sacrifice_souls()
+		elif can_donate_souls_to_door1 or can_donate_souls_to_door2 or can_donate_souls_to_door3:
+			give_souls_to_door()
 	if knockback != Vector2():
 		knockback = knockback.linear_interpolate(Vector2(), 0.5)
 	#look_at(get_global_mouse_position())
+
 
 func _handle_movement_input():
 	if !can_move:
@@ -83,13 +80,16 @@ func _handle_movement_input():
 	var move_dir_x = int(Input.is_action_pressed('right')) - int(Input.is_action_pressed('left'))
 	move_dir = Vector2(move_dir_x, move_dir_y).normalized()
 
+
 func _apply_movement(delta):
 	acceleration = move_dir * move_speed * delta
 	velocity += acceleration.clamped(max_move_speed) + knockback
 	velocity = move_and_slide(velocity)
 
+
 func _apply_friction(delta):
 	velocity = velocity.linear_interpolate(Vector2.ZERO, FRICTION * delta)
+
 
 func _handle_shooting():
 	if Input.is_action_pressed('shoot') and can_shoot:
@@ -100,12 +100,13 @@ func _handle_shooting():
 		bullet_instance.rotation = atan2(bullet_instance.direction.y, bullet_instance.direction.x)
 		bullet_instance.damage = damage
 		bullet_instance.parent = self
-		bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 100)
+		bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 10)
 		get_tree().get_root().get_node("/root/Scene1/YSort").add_child(bullet_instance)
 		if Globals.sound:
 			shoot_sound.play()
 		yield(get_tree().create_timer(shoot_delay), "timeout")
 		can_shoot = true
+
 
 func get_soul():
 	if souls >= max_souls:
@@ -115,11 +116,28 @@ func get_soul():
 	set_souls(1)
 	change_stats(1)
 
+
 func sacrifice_souls():
 	if souls == 0 or !can_sacrifice_souls:
 		return
 	var god = get_tree().get_nodes_in_group('god')[0]
 	god.receive_soul()
+	change_stats(-1)
+	set_souls(-1)
+
+
+func give_souls_to_door():
+	if souls == 0:
+		return 
+	var door = null
+	if can_donate_souls_to_door1:
+		door = get_tree().get_nodes_in_group('door1')[0]
+	elif can_donate_souls_to_door2:
+		door = get_tree().get_nodes_in_group('door2')[0]
+	elif can_donate_souls_to_door3:
+		door = get_tree().get_nodes_in_group('door3')[0]
+	else: return 
+	door.receive_soul()
 	change_stats(-1)
 	set_souls(-1)
 
@@ -147,12 +165,12 @@ func activate_berserk_mode():
 	if !is_berserk and $BerserkTimer.time_left <= 0:
 		$BerserkTimer.wait_time = 10
 		is_berserk = true
-		change_stats(7)
+		change_stats(15)
 
 func deactivate_berserk_mode():
 	if is_berserk:
 		is_berserk = false
-		change_stats(-7)
+		change_stats(-15)
 		$BerserkTimer.start()
 
 func receive_damage(amount, knockback_direction, source):

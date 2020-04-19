@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Doors/DoorCenter.gd" type="Script" id=2]
+
+[node name="DoorCenter" instance=ExtResource( 1 )]
+rotation = 0.0
+script = ExtResource( 2 )
+
+[node name="Label" parent="." index="8"]
+margin_left = -104.0
+margin_top = -64.0
+margin_right = -48.0
+margin_bottom = -8.00001
+rect_rotation = 0.0
+text = "Needed:
+50 souls"

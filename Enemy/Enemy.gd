@@ -49,9 +49,10 @@ func search(delta):
 		if !SceneLoader.is_loading_scene:
 			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	if (target.global_position.distance_to(starting_point)) >= 500 or !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path"):
+	if (target.global_position.distance_to(starting_point)) >= 1000 or !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path"):
 		return
 	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
+	$Label.text = str(path_to_player.size())
 	var move_distance = MOVE_SPEED * delta
 	for point in range(path_to_player.size()):
 		var distance_to_next_point = starting_point.distance_to(path_to_player[point])
@@ -67,7 +68,7 @@ func search(delta):
 	if motion != Vector2() and !anim_player.is_playing():
 		anim_player.play('move')
 
-func receive_damage(damage, knockback_direction, source):
+func receive_damage(damage_received, knockback_direction, source):
 	if !can_be_damaged:
 		return
 	target = source
@@ -78,7 +79,7 @@ func receive_damage(damage, knockback_direction, source):
 	anim_player.stop()
 	sprite.visible = false
 	damage_sprite.visible = true
-	set_hp(damage)
+	set_hp(damage_received)
 
 	yield(get_tree().create_timer(0.1), 'timeout')
 	sprite.visible = true
