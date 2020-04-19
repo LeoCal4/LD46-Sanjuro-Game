@@ -52,7 +52,6 @@ func search(delta):
 	if (target.global_position.distance_to(starting_point)) >= 1000 or !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path"):
 		return
 	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
-	$Label.text = str(path_to_player.size())
 	var move_distance = MOVE_SPEED * delta
 	for point in range(path_to_player.size()):
 		var distance_to_next_point = starting_point.distance_to(path_to_player[point])

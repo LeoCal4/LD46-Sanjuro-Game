@@ -52,12 +52,17 @@ __meta__ = {
 }
 
 [node name="Shadows" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Shadow" type="Sprite" parent="Shadows"]
 modulate = Color( 1, 1, 1, 0.470588 )
-position = Vector2( 368.401, 41.516 )
-scale = Vector2( 43.9161, 1 )
+position = Vector2( 352.593, 41.516 )
+scale = Vector2( 41.9402, 1 )
+texture = ExtResource( 3 )
+
+[node name="Shadow16" type="Sprite" parent="Shadows"]
+modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 784.309, 65.8628 )
+scale = Vector2( 12.0184, 4 )
 texture = ExtResource( 3 )
 
 [node name="Shadow4" type="Sprite" parent="Shadows"]
@@ -123,8 +128,8 @@ texture = ExtResource( 3 )
 
 [node name="Shadow2" type="Sprite" parent="Shadows"]
 modulate = Color( 1, 1, 1, 0.470588 )
-position = Vector2( 1200.12, 41.516 )
-scale = Vector2( 44.0057, 1 )
+position = Vector2( 1216.29, 41.516 )
+scale = Vector2( 41.9842, 1 )
 texture = ExtResource( 3 )
 
 [node name="Shadow3" type="Sprite" parent="Shadows"]

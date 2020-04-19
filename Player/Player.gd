@@ -79,12 +79,17 @@ func _handle_movement_input():
 	var move_dir_y = int(Input.is_action_pressed('down')) - int(Input.is_action_pressed('up'))
 	var move_dir_x = int(Input.is_action_pressed('right')) - int(Input.is_action_pressed('left'))
 	move_dir = Vector2(move_dir_x, move_dir_y).normalized()
+	if move_dir != Vector2.ZERO:
+		$AnimationPlayer.play('move')
+	else:
+		$AnimationPlayer.stop()
 
 
 func _apply_movement(delta):
 	acceleration = move_dir * move_speed * delta
 	velocity += acceleration.clamped(max_move_speed) + knockback
 	velocity = move_and_slide(velocity)
+
 
 
 func _apply_friction(delta):
