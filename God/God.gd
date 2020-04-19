@@ -5,6 +5,7 @@ const MAX_HEALTH = 100
 onready var label = $Label
 onready var sprite = $Sprite
 onready var soul_particles = $SoulParticles
+onready var health_bar = get_node('/root/UI').get_child(2)
 
 var center = 0
 var rotation_speed = 3
@@ -28,6 +29,7 @@ func _physics_process(delta):
 func set_hp(amount):
 	check_berserk(amount)
 	hp = clamp(hp + amount, 0, MAX_HEALTH)
+	health_bar.value = hp
 	if hp <= 0:
 		SceneLoader.reload_scene()
 	label.text = str(int(hp))
@@ -50,6 +52,8 @@ func check_berserk(amount):
 func receive_soul():
 	sprite.frame = 4
 	soul_particles.emitting = true
+	if Globals.sound:
+		$RecieveSoul.play()
 	yield(get_tree().create_timer(0.3), "timeout")
 	set_hp(5)
 	soul_particles.emitting = false

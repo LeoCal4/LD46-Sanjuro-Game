@@ -17,11 +17,15 @@ var shoot_delay = 0.3
 
 var damage = base_damage
 
-var souls = 3
+var souls = 0 setget set_souls
 
 onready var bullet_start_position = $BulletStartPosition
 onready var damage_sprite = $DamageSprite
+onready var health_bar = get_node('/root/UI').get_child(3)
+onready var souls_label = get_node('/root/UI').get_child(4)
 onready var sprite = $Sprite
+onready var soul_sacrifice_label = $SoulSacrificeLabel
+onready var shoot_sound = $ShootSound
 const bullet_scene = preload("res://Player/Bullet/Bullet.tscn")
 
 var health = max_health
@@ -30,7 +34,7 @@ var velocity
 var acceleration
 var knockback
 var shoot_delay_timer
-var can_move 
+var can_move = true
 var can_shoot
 var can_sacrifice_souls = false
 var is_berserk = false
@@ -45,6 +49,11 @@ func _ready():
 	can_shoot = true
 	yield(get_tree(), 'idle_frame')
 	get_tree().call_group('enemies', 'set_player', self)
+	if (is_instance_valid(health_bar)):
+		health_bar.value = 100
+	if (is_instance_valid(souls_label)):
+		souls_label.text = str(souls) + " / " + str(max_souls)
+	
 
 func _physics_process(delta):
 	_handle_movement_input()
@@ -83,13 +92,17 @@ func _handle_shooting():
 		bullet_instance.damage = damage
 		bullet_instance.parent = self
 		get_tree().get_root().add_child(bullet_instance)
+		if Globals.sound:
+			shoot_sound.play()
 		yield(get_tree().create_timer(shoot_delay), "timeout")
 		can_shoot = true
 
 func get_soul():
 	if souls >= max_souls:
 		return
-	souls += 1
+	if Globals.sound:
+		$PickSoulSound.play()
+	set_souls(1)
 	change_stats(1)
 	print('got soul')
 
@@ -99,7 +112,7 @@ func sacrifice_souls():
 	var god = get_tree().get_nodes_in_group('god')[0]
 	god.receive_soul()
 	change_stats(-1)
-	souls -= 1
+	set_souls(-1)
 
 # factor: number of souls and if they're lost or gained
 func change_stats(factor):
@@ -126,13 +139,19 @@ func receive_damage(amount, knockback_direction, source):
 	knockback = knockback_direction * KNOCKBACK
 	sprite.visible = false
 	damage_sprite.visible = true
+	if Globals.sound:
+		$DamageSound.play()
 	yield(get_tree().create_timer(0.1), 'timeout')
 	sprite.visible = true
 	damage_sprite.visible = false
 
 func set_hp(amount):
 	health += amount
-	$HealthBar.value = health
+	health_bar.value = health
 	if health <= 0:
 		can_move = false
 		SceneLoader.reload_scene()
+
+func set_souls(amount):
+	souls += amount
+	souls_label.text = str(souls) + " / " + str(max_souls)

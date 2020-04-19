@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LD45music.wav-b29b3cd9faa72ff4b2162083e98f417a.sample"
+
+[deps]
+
+source_file="res://Sounds/LD45music.wav"
+dest_files=[ "res://.import/LD45music.wav-b29b3cd9faa72ff4b2162083e98f417a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

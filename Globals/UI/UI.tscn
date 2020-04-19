@@ -1,26 +1,58 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Globals/UI/UI.gd" type="Script" id=1]
+[ext_resource path="res://overlay.png" type="Texture" id=2]
 
 [node name="UI" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 1 )
 
+[node name="overlay" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2( 0, 6 )
 
 [node name="Sound" type="Button" parent="Buttons"]
-margin_left = -0.332703
-margin_top = -3.6275
-margin_right = 91.6673
-margin_bottom = 20.3725
+visible = false
+margin_left = 915.457
+margin_top = 60.583
+margin_right = 1007.46
+margin_bottom = 84.583
 text = "Sound"
 
 [node name="Reload" type="Button" parent="Buttons"]
-margin_left = 914.153
-margin_top = -3.41016
-margin_right = 1022.16
-margin_bottom = 18.5898
+margin_left = 899.416
+margin_top = 62.9056
+margin_right = 1007.42
+margin_bottom = 84.9056
 text = "Reload"
+
+[node name="GodBar" type="ProgressBar" parent="."]
+margin_left = 22.0
+margin_top = 13.0
+margin_right = 715.0
+margin_bottom = 55.0
+step = 1.0
+value = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 865.053
+margin_top = 23.9474
+margin_right = 1002.05
+margin_bottom = 43.9474
+step = 1.0
+value = 100.0
+
+[node name="Souls" type="Label" parent="."]
+margin_left = 766.631
+margin_top = 24.4737
+margin_right = 827.631
+margin_bottom = 55.4737
+text = "0 / 0
+"
+align = 1
+valign = 1
 [connection signal="button_up" from="Buttons/Sound" to="." method="_on_Button2_button_up"]
 [connection signal="button_down" from="Buttons/Reload" to="." method="_on_Button_button_down"]

@@ -44,7 +44,7 @@ func search(delta):
 		if !SceneLoader.is_loading_scene:
 			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	if (target.global_position.distance_to(starting_point)) >= 500:
+	if (target.global_position.distance_to(starting_point)) >= 500 or !is_instance_valid(map_navigation):
 		return
 	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
 	var move_distance = MOVE_SPEED * delta
@@ -64,12 +64,15 @@ func search(delta):
 
 func receive_damage(damage, knockback_direction, source):
 	target = source
-	set_hp(damage)
+	if Globals.sound:
+		$DamageSound.play()
 	emit_signal('camera_shake_requested')
 	knockback = knockback_direction * KNOCKBACK
 	anim_player.stop()
 	sprite.visible = false
 	damage_sprite.visible = true
+	set_hp(damage)
+
 	yield(get_tree().create_timer(0.1), 'timeout')
 	sprite.visible = true
 	damage_sprite.visible = false

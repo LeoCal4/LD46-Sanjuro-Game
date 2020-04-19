@@ -18,6 +18,7 @@ hframes = 2
 frame = 1
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -15.4065
 margin_top = -39.2775
 margin_right = 13.5935
@@ -40,3 +41,7 @@ radial_accel_random = 1.0
 tangential_accel = 5.0
 scale_amount = 10.0
 color_ramp = SubResource( 1 )
+
+[node name="RecieveSoul" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+pitch_scale = 0.8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://God/God.tscn" type="PackedScene" id=8]
 [ext_resource path="res://EnemySpawner.gd" type="Script" id=9]
 [ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -500.527, 9.47507, 1014.5, 6.90161, 1015.97, 826.165, -505.241, 828.016 )
@@ -229,5 +230,10 @@ position = Vector2( 1069.29, 290.721 )
 
 [node name="RangedEnemy" parent="." instance=ExtResource( 10 )]
 position = Vector2( 125.348, 74.5739 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -15.0
+autoplay = true
 [connection signal="body_entered" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_entered"]
 [connection signal="body_exited" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_exited"]
