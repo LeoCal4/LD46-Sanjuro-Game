@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 5
+export var MOVE_SPEED = 5
 const MAX_SPEED = 100
 const FULL_HP = 100
 const FRICTION = 0
@@ -12,11 +12,12 @@ onready var map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
 onready var sprite = $Sprite
 onready var damage_sprite = $DamageSprite
 onready var anim_player = $AnimationPlayer
+onready var collision_shape = $CollisionShape2D
 
 var target
 var hp = FULL_HP setget set_hp
-var damage = 20
-var motion
+export var damage = 20
+var motion 
 var acceleration
 var knockback
 var can_move = false
@@ -31,7 +32,7 @@ func _ready():
 	acceleration = Vector2.ZERO
 	knockback = Vector2.ZERO
 	connect("camera_shake_requested", get_tree().get_nodes_in_group('camera')[0], 'shake')
-	$CollisionShape2D.disabled = true
+	collision_shape.disabled = true
 	if !map_navigation:
 		map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
 
@@ -49,7 +50,7 @@ func search(delta):
 		if !SceneLoader.is_loading_scene:
 			target = get_tree().get_nodes_in_group('player')[0]
 		return
-	if (target.global_position.distance_to(starting_point)) >= 1000 or !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path"):
+	if !is_instance_valid(map_navigation) or !map_navigation.has_method("get_simple_path") or (target.global_position.distance_to(starting_point)) >= 1000:
 		return
 	var path_to_player = map_navigation.get_simple_path(starting_point, target.global_position)
 	var move_distance = MOVE_SPEED * delta
@@ -65,7 +66,12 @@ func search(delta):
 		move_distance -= distance_to_next_point
 		starting_point = path_to_player[point]
 	if motion != Vector2() and !anim_player.is_playing():
-		anim_player.play('move')
+		play_move_animation()
+		
+
+func play_move_animation():
+	anim_player.play('move')
+
 
 func receive_damage(damage_received, knockback_direction, source):
 	if !can_be_damaged:
@@ -85,11 +91,14 @@ func receive_damage(damage_received, knockback_direction, source):
 	damage_sprite.visible = false
 
 func die():
+	spawn_souls()
+	Globals.add_enemy_killed()
+	queue_free()
+
+func spawn_souls():
 	var soul = soul_scene.instance()
 	soul.position = position
 	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', soul)
-	Globals.add_enemy_killed()
-	queue_free()
 
 func set_hp(damage):
 	hp -= damage
@@ -108,7 +117,7 @@ func complete_spawn():
 	can_attack = true
 	can_move = true
 	can_be_damaged = true
-	$CollisionShape2D.disabled = false
+	collision_shape.disabled = false
 	$Spawn.visible = false
-	$Sprite.visible = true
+	sprite.visible = true
 	$Shadow.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
@@ -10,18 +10,20 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Floor/Column.tscn" type="PackedScene" id=10]
-[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=11]
-[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=13]
-[ext_resource path="res://ItemSpawner.gd" type="Script" id=14]
-[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Doors/DoorRight.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Doors/DoorCenter.tscn" type="PackedScene" id=21]
-[ext_resource path="res://RoomBlocks.gd" type="Script" id=22]
+[ext_resource path="res://Enemy/BiEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemy/BigRangedEnemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=13]
+[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=15]
+[ext_resource path="res://ItemSpawner.gd" type="Script" id=16]
+[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Doors/DoorRight.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Doors/DoorCenter.tscn" type="PackedScene" id=23]
+[ext_resource path="res://RoomBlocks.gd" type="Script" id=24]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -1255.26, 600.689, -1141.28, 549.784, -840.132, 547.884, -747.032, 548.834, -718.109, 593.479, -182.982, 286.084, 695.492, 282.496, 778.594, 284.713, 1015.92, 355.546, 1012.31, 467.303, 775.27, 570.586, 696.6, 570.586, -188.636, 563.937, -266.199, 561.721, -501.806, 402.412, -725.319, 121.218, -710.899, 305.075, -759.382, 227.733, -763.182, 171.683, -714.504, 402.412, -757.482, 494.684, -1255.26, 124.823, -848.682, 167.883, 1012.31, 813.387, 777.486, 625.987, 312.934, 809.782, 698.816, 625.987, 201.178, 806.177, -185.312, 622.663, -1221.08, 549.784, -1222.03, 494.684, 1001.5, 13.0669, 775.27, 228.203, -498.201, 16.6719, 693.276, 229.311, -184.982, 229.083, -261.983, 227.083, 82.2112, 1253.2, -51.1755, 1256.81, -47.5704, 1022.48, 82.2112, 1011.66, 439.111, 1249.6, 78.6061, 957.589, 211.993, 953.984, 312.934, 964.799, 439.111, 1018.87, 568.892, 1245.99, 1235.83, 359.151, 1228.62, -1.3533, 1711.69, 5.85678, 1715.3, 658.37, 1221.41, 665.58, 1225.01, 463.697, -1138.43, 220.133, -847.732, 224.883, -1143.18, 497.534, -1139.38, 165.983, -1218.23, 164.083, -509.016, 319.496, -261.983, 284.084, 568.892, 1018.87, 193.968, 1696.62, 85.8162, 1696.62, -839.182, 493.734, 435.506, 1696.62, 312.934, 1700.23, -1219.18, 219.183, 428.295, 964.799, 287.699, 1765.12, 226.413, 1757.91, -498.201, 798.967, -265.091, 619.339 )
@@ -52,6 +54,7 @@ __meta__ = {
 }
 
 [node name="Shadows" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Shadow" type="Sprite" parent="Shadows"]
 modulate = Color( 1, 1, 1, 0.470588 )
@@ -289,7 +292,6 @@ __meta__ = {
 position = Vector2( 783.679, -13.1918 )
 
 [node name="YSort" type="YSort" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -341,6 +343,15 @@ position = Vector2( -269.418, 540.843 )
 editor/display_folded = true
 position = Vector2( -650.756, 215.648 )
 
+[node name="BigEnemy" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 690.93, 244.375 )
+
+[node name="BigRangedEnemy" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 955.656, 173.344 )
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 5
+
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation2d",
 ]]
@@ -358,7 +369,7 @@ navpoly = SubResource( 1 )
 
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
 position = Vector2( 814.74, 64.8908 )
-script = ExtResource( 11 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -380,17 +391,17 @@ text = "Press E to feed
 align = 1
 valign = 1
 
-[node name="EnemySpawner" parent="." instance=ExtResource( 12 )]
+[node name="EnemySpawner" parent="." instance=ExtResource( 14 )]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource( 15 )
 volume_db = -15.0
 autoplay = true
 
 [node name="ItemSpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 14 )
-items = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ]
+script = ExtResource( 16 )
+items = [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="Position2D" type="Position2D" parent="ItemSpawner"]
 position = Vector2( 44.4336, 843.116 )
@@ -403,25 +414,25 @@ editor/display_folded = true
 
 [node name="Door" parent="Doors" groups=[
 "door1",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 21 )]
 position = Vector2( 8.07132, 386.057 )
 
 [node name="DoorRight" parent="Doors" groups=[
 "door2",
-] instance=ExtResource( 20 )]
+] instance=ExtResource( 22 )]
 position = Vector2( 1560.73, 459.214 )
 scale = Vector2( 1.17641, 1 )
 souls_needed = 30
 
 [node name="DoorCenter" parent="Doors" groups=[
 "door3",
-] instance=ExtResource( 21 )]
+] instance=ExtResource( 23 )]
 position = Vector2( 776.621, 873.958 )
 scale = Vector2( 1.20002, 1 )
 souls_needed = 50
 
 [node name="RoomBlocks" type="Node2D" parent="."]
-script = ExtResource( 22 )
+script = ExtResource( 24 )
 
 [node name="Shadow" type="Sprite" parent="RoomBlocks"]
 position = Vector2( -415.095, 474.044 )
