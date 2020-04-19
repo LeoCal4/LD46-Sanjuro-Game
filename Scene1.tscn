@@ -1,21 +1,16 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Walls/Walls.tres" type="TileSet" id=6]
-[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=7]
-[ext_resource path="res://God/God.tscn" type="PackedScene" id=8]
-[ext_resource path="res://EnemySpawner.gd" type="Script" id=9]
-[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Walls/Walls.tres" type="TileSet" id=4]
+[ext_resource path="res://God/God.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=9]
+[ext_resource path="res://EnemySpawner.gd" type="Script" id=10]
 [ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=11]
-[ext_resource path="res://Item/HealthPickup.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -500.527, 9.47507, 1014.5, 6.90161, 1015.97, 826.165, -505.241, 828.016 )
@@ -51,19 +46,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 772.417, 488.198 )
-
-[node name="Player" parent="." groups=[
-"player",
-] instance=ExtResource( 5 )]
-position = Vector2( 784.019, 129.036 )
-
 [node name="Walls" type="TileMap" parent="." groups=[
 "walls",
 ]]
 position = Vector2( 528.042, 34.0734 )
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
 collision_mask = 0
@@ -72,6 +59,34 @@ tile_data = PoolIntArray( -524278, 1, 0, -524277, 1, 0, -524276, 1, 0, -524275, 
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="God" parent="." groups=[
+"god",
+] instance=ExtResource( 5 )]
+position = Vector2( 783.679, -13.1918 )
+
+[node name="FloorDetails" type="TileMap" parent="."]
+scale = Vector2( 1.5, 1.5 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 40 )
+cell_y_sort = true
+collision_layer = 4
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65542, 8, 0, 65565, 9, 0, 327686, 8, 0, 327696, 9, 0, 327709, 8, 0, 655366, 9, 0, 655376, 8, 0, 655389, 9, 0 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Enemy" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 772.417, 488.198 )
+
+[node name="Player" parent="YSort" groups=[
+"player",
+] instance=ExtResource( 7 )]
+position = Vector2( 784.019, 129.036 )
+
+[node name="RangedEnemy" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 125.348, 74.5739 )
 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "navigation2d",
@@ -89,7 +104,7 @@ navpoly = SubResource( 1 )
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 814.74, 64.8908 )
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -98,15 +113,10 @@ __meta__ = {
 position = Vector2( -29.7478, -0.710938 )
 shape = SubResource( 2 )
 
-[node name="God" parent="." groups=[
-"god",
-] instance=ExtResource( 8 )]
-position = Vector2( 783.679, -13.1918 )
-
 [node name="EnemySpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 9 )
-enemies = [ ExtResource( 4 ), ExtResource( 10 ) ]
+script = ExtResource( 10 )
+enemies = [ ExtResource( 6 ), ExtResource( 8 ) ]
 
 [node name="Position2D" type="Position2D" parent="EnemySpawner"]
 position = Vector2( 175.106, 174.626 )
@@ -246,57 +256,9 @@ position = Vector2( 1137.13, 173.148 )
 [node name="Position2D46" type="Position2D" parent="EnemySpawner"]
 position = Vector2( 1069.29, 290.721 )
 
-[node name="RangedEnemy" parent="." instance=ExtResource( 10 )]
-position = Vector2( 125.348, 74.5739 )
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -15.0
 autoplay = true
-
-[node name="HealthPickup" parent="." instance=ExtResource( 12 )]
-position = Vector2( 559.758, 120.792 )
-
-[node name="Boots" parent="." instance=ExtResource( 13 )]
-position = Vector2( 583.176, 232.043 )
-
-[node name="Boots2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 627.375, 277.469 )
-
-[node name="Boots3" parent="." instance=ExtResource( 13 )]
-position = Vector2( 681.396, 238.182 )
-
-[node name="Bow" parent="." instance=ExtResource( 14 )]
-position = Vector2( 876.682, 287.246 )
-
-[node name="Bow2" parent="." instance=ExtResource( 14 )]
-position = Vector2( 823.608, 235.569 )
-
-[node name="Bow3" parent="." instance=ExtResource( 14 )]
-position = Vector2( 781.708, 285.849 )
-
-[node name="SoulContainer" parent="." instance=ExtResource( 15 )]
-position = Vector2( 949.112, 183.78 )
-
-[node name="SoulContainer2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 932.204, 240.382 )
-
-[node name="SoulContainer3" parent="." instance=ExtResource( 15 )]
-position = Vector2( 977.78, 216.859 )
-
-[node name="DamageUp" parent="." instance=ExtResource( 16 )]
-position = Vector2( 948.714, 95.4014 )
-
-[node name="DamageUp2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 981.676, 120.798 )
-
-[node name="DamageUp3" parent="." instance=ExtResource( 16 )]
-position = Vector2( 917.913, 114.314 )
-
-[node name="DamageUp4" parent="." instance=ExtResource( 16 )]
-position = Vector2( 985.459, 71.0852 )
-
-[node name="DamageUp5" parent="." instance=ExtResource( 16 )]
-position = Vector2( 921.156, 73.2466 )
 [connection signal="body_entered" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_entered"]
 [connection signal="body_exited" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_exited"]
