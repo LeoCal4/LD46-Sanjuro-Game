@@ -40,6 +40,8 @@ var can_donate_souls_to_door1 = false
 var can_donate_souls_to_door2 = false
 var can_donate_souls_to_door3 = false
 var is_berserk = false
+var has_armor = false
+var has_shotgun = false
 
 func _ready():
 	health = max_health
@@ -97,16 +99,28 @@ func _apply_friction(delta):
 
 
 func _handle_shooting():
+	var additional_directions = [-30, 0, 30]
 	if Input.is_action_pressed('shoot') and can_shoot:
 		can_shoot = false
-		var bullet_instance = bullet_scene.instance()
-		bullet_instance.position = bullet_start_position.get_global_position()
-		bullet_instance.direction = (get_global_mouse_position() - position).normalized()
-		bullet_instance.rotation = atan2(bullet_instance.direction.y, bullet_instance.direction.x)
-		bullet_instance.damage = damage
-		bullet_instance.parent = self
-		bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 10)
-		get_tree().get_root().get_node("/root/Scene1/YSort").add_child(bullet_instance)
+		if has_shotgun:
+			for i in range(3):
+				var bullet_instance = bullet_scene.instance()
+				bullet_instance.position = bullet_start_position.get_global_position()
+				bullet_instance.direction = ((get_global_mouse_position() - position) + Vector2(additional_directions[i], -additional_directions[i])).normalized()
+				bullet_instance.rotation = atan2(bullet_instance.direction.y, bullet_instance.direction.x)
+				bullet_instance.damage = damage
+				bullet_instance.parent = self
+				bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 10)
+				get_tree().get_root().get_node("/root/Scene1/YSort").add_child(bullet_instance)
+		else:
+			var bullet_instance = bullet_scene.instance()
+			bullet_instance.position = bullet_start_position.get_global_position()
+			bullet_instance.direction = (get_global_mouse_position() - position).normalized()
+			bullet_instance.rotation = atan2(bullet_instance.direction.y, bullet_instance.direction.x)
+			bullet_instance.damage = damage
+			bullet_instance.parent = self
+			bullet_instance.scale += Vector2(0.1, 0.1) * ((damage - base_damage) / 10)
+			get_tree().get_root().get_node("/root/Scene1/YSort").add_child(bullet_instance)
 		if Globals.sound:
 			shoot_sound.play()
 		yield(get_tree().create_timer(shoot_delay), "timeout")
@@ -157,6 +171,8 @@ func set_move_speed(amount):
 	move_speed = clamp(move_speed + amount, base_move_speed, max_move_speed)
 
 func set_damage(amount):
+	if has_armor:
+		amount /= 2
 	damage = clamp(damage + amount, base_damage, max_damage)
 
 func set_shoot_delay(amount):
