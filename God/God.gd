@@ -81,7 +81,7 @@ func spawn_random_item():
 	items.shuffle()
 	var item_scene = items.front()
 	var item = item_scene.instance()
-	item.position = position
+	item.global_position = $ItemSpawnPosition.global_position
 	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', item)
 
 func spawn_soul_container():
