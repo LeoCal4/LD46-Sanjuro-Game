@@ -117,4 +117,5 @@ margin_bottom = 14.0
 visible = false
 width = 5.0
 default_color = Color( 1, 0, 0, 1 )
+texture_mode = 1066401792
 [connection signal="body_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_body_entered"]

@@ -23,33 +23,39 @@ margin_right = 1068.0
 margin_bottom = 483.0
 
 [node name="Button" type="Button" parent="Control"]
-margin_left = -17.2527
-margin_top = 4.20746
-margin_right = 262.747
-margin_bottom = 95.2075
+margin_left = -14.2381
+margin_top = -25.9393
+margin_right = 265.762
+margin_bottom = 65.0607
 text = "START"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 119.103
-margin_top = 737.562
-margin_right = 900.103
-margin_bottom = 826.562
+margin_left = 134.176
+margin_top = 755.65
+margin_right = 915.176
+margin_bottom = 844.65
 text = "LUDUM DARE 46"
-align = 1
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 125.24
-margin_top = 566.196
-margin_right = 906.24
-margin_bottom = 655.196
-text = "CONTROLS:
-WASD to move
-MOUSE to aim and shoot
-E to use"
 align = 1
 
 [node name="Logo" type="Sprite" parent="."]
 position = Vector2( 0, 74 )
 texture = ExtResource( 3 )
 centered = false
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2( 1.8, 1.8 )
+
+[node name="Label2" type="Label" parent="Node2D"]
+margin_left = -80.7914
+margin_top = 275.68
+margin_right = 662.209
+margin_bottom = 388.68
+text = "CONTROLS:
+
+- WASD to move
+- MOUSE to aim and shoot
+- E to offer soul to the master 
+or to the doors"
+align = 1
+uppercase = true
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]

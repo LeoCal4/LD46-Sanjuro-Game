@@ -2,6 +2,8 @@ extends StaticBody2D
 
 const MAX_HEALTH = 100
 
+export(Array, PackedScene) var items = []
+
 var soul_container_scene = preload("res://Item/SoulContainer.tscn")
 var health_scene = preload("res://Item/HealthPickup.tscn")
 
@@ -67,11 +69,20 @@ func receive_soul():
 	handle_item_spawn()
 
 func handle_item_spawn():
+	if souls_received % 25 == 0:
+		spawn_random_item()
 	if souls_received % 15 == 0:
 		spawn_soul_container()
 	elif souls_received % 5 == 0:
-		if randf() >= 0.4:
+		if randf() >= 0.6:
 			spawn_health()
+
+func spawn_random_item():
+	items.shuffle()
+	var item_scene = items.front()
+	var item = item_scene.instance()
+	item.position = position
+	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', item)
 
 func spawn_soul_container():
 	var soul_container = soul_container_scene.instance()

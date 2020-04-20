@@ -101,6 +101,7 @@ func receive_damage(damage_received, knockback_direction, source):
 func die():
 	spawn_souls()
 	spawn_health()
+	Globals.alive_enemies -= 1
 	Globals.add_enemy_killed()
 	while ($DamageSound.is_playing()):
 		yield(get_tree(), 'idle_frame')
