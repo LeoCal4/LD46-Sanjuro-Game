@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Menu/logo.png" type="Texture" id=3]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,10 +17,10 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="."]
-margin_left = 398.0
-margin_top = 375.0
-margin_right = 657.0
-margin_bottom = 464.0
+margin_left = 387.0
+margin_top = 394.0
+margin_right = 1068.0
+margin_bottom = 483.0
 
 [node name="Button" type="Button" parent="Control"]
 margin_left = -17.2527
@@ -35,4 +36,20 @@ margin_right = 900.103
 margin_bottom = 826.562
 text = "LUDUM DARE 46"
 align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 125.24
+margin_top = 566.196
+margin_right = 906.24
+margin_bottom = 655.196
+text = "CONTROLS:
+WASD to move
+MOUSE to aim and shoot
+E to use"
+align = 1
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 0, 74 )
+texture = ExtResource( 3 )
+centered = false
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]

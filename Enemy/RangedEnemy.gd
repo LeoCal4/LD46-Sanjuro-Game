@@ -11,6 +11,7 @@ onready var raycast = $RayCast2D
 func _ready():
 	._ready()
 	damage = 10
+	hp = 80
 
 func _process(delta):
 	time += delta

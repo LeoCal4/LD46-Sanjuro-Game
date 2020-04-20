@@ -188,8 +188,10 @@ func set_max_souls(amount):
 
 func activate_berserk_mode():
 	if !is_berserk and $BerserkTimer.time_left <= 0:
-		if Globals.audio:
+		if Globals.sound:
 			$EvilLaugh.play()
+		$BerserkSprite.visible = true
+		sprite.visible = false
 		$BerserkTimer.wait_time = 10
 		is_berserk = true
 		change_stats(15)
@@ -197,6 +199,8 @@ func activate_berserk_mode():
 func deactivate_berserk_mode():
 	if is_berserk:
 		is_berserk = false
+		$BerserkSprite.visible = false
+		sprite.visible = true
 		change_stats(-15)
 		$BerserkTimer.start()
 

@@ -25,5 +25,6 @@ func receive_soul():
 	souls += 1
 	$Label.text = "Needed:\n" + str(souls_needed - souls) + " souls"
 	if souls >= souls_needed:
+		print('ao')
 		emit_signal('open_door')
 		queue_free()

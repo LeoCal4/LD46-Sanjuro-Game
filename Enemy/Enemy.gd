@@ -8,6 +8,8 @@ const KNOCKBACK = 100
 
 const soul_scene = preload("res://Soul/Soul.tscn")
 
+const health_scene = preload("res://Item/HealthPickup.tscn")
+
 onready var map_navigation = get_tree().get_nodes_in_group('navigation2d')[0]
 onready var sprite = $Sprite
 onready var damage_sprite = $DamageSprite
@@ -30,6 +32,7 @@ signal camera_shake_requested
 
 func _ready():
 	add_to_group('enemies')
+	randomize()
 	motion = Vector2.ZERO
 	acceleration = Vector2.ZERO
 	knockback = Vector2.ZERO
@@ -97,6 +100,7 @@ func receive_damage(damage_received, knockback_direction, source):
 
 func die():
 	spawn_souls()
+	spawn_health()
 	Globals.add_enemy_killed()
 	while ($DamageSound.is_playing()):
 		yield(get_tree(), 'idle_frame')
@@ -106,6 +110,12 @@ func spawn_souls():
 	var soul = soul_scene.instance()
 	soul.position = position
 	get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', soul)
+
+func spawn_health():
+	if randf() >= 0.8:
+		var health = health_scene.instance()
+		health.position = position + Vector2(5, 5)
+		get_tree().get_root().get_node("/root/Scene1/YSort/").call_deferred('add_child', health)
 
 func set_hp(damage):
 	hp -= damage

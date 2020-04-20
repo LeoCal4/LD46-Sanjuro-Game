@@ -2,7 +2,7 @@ extends Node
 
 const DEBUG = false
 var sound = true
-var enemy_spawn_delay = 6
+var enemy_spawn_delay = 7
 var enemy_left_room_spawn_delay = 10
 var item_spawn_delay = 15
 var enemies_killed = 0
@@ -20,3 +20,4 @@ func reset_stats():
 	enemy_spawn_delay = 5
 	enemies_killed = 0
 	decay_multiplicator = 1
+	alive_enemies = 0

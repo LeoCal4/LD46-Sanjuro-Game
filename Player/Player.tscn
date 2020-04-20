@@ -13,7 +13,7 @@
 radius = 6.53317
 height = 11.3728
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "death"
 length = 0.3
 tracks/0/type = "value"
@@ -79,7 +79,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 1 ), Vector2( 0, 2 ), Vector2( 0, 4 ), Vector2( 0, 5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "move"
 length = 0.4
 tracks/0/type = "value"
@@ -95,7 +95,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.97351 )
 colors = PoolColorArray( 0.131912, 0.320641, 0.371094, 1, 1, 1, 1, 0.470588 )
 
@@ -172,8 +172,8 @@ volume_db = -10.0
 pitch_scale = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 4 )
-anims/move = SubResource( 5 )
+anims/death = SubResource( 2 )
+anims/move = SubResource( 3 )
 
 [node name="SoulsParticles" type="CPUParticles2D" parent="."]
 position = Vector2( -0.366261, 11.354 )
@@ -186,7 +186,7 @@ emission_rect_extents = Vector2( -5, 1 )
 gravity = Vector2( 0, -90 )
 radial_accel = 50.0
 scale_amount = 3.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 4 )
 
 [node name="OfferSoul" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
@@ -196,3 +196,10 @@ pitch_scale = 0.8
 [node name="EvilLaugh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
+
+[node name="BerserkSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+vframes = 3
+hframes = 3
+frame = 5

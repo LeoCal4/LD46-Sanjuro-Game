@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scene1.gd" type="Script" id=1]
 [ext_resource path="res://Floor/FloorTileset.tres" type="TileSet" id=2]
@@ -7,29 +7,28 @@
 [ext_resource path="res://Walls/Walls.tres" type="TileSet" id=5]
 [ext_resource path="res://God/God.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SoulSacrificeArea.gd" type="Script" id=7]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/BiEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemy/RangedEnemy.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemy/BiEnemy.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Enemy/BigRangedEnemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Floor/Column.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Item/Armor.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Item/Shotgun.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Soul/BloodSoul.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Item/HealthPickup.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=21]
-[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=22]
-[ext_resource path="res://LeftRoomEnemySpawner.gd" type="Script" id=23]
-[ext_resource path="res://RightRoomEnemySpawner.gd" type="Script" id=24]
-[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=25]
-[ext_resource path="res://Item/ItemSpawner.gd" type="Script" id=26]
-[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Doors/DoorRight.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Doors/DoorCenter.tscn" type="PackedScene" id=29]
-[ext_resource path="res://RoomBlocks.gd" type="Script" id=30]
+[ext_resource path="res://Enemy/BigRangedEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Floor/Column.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Item/Armor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Item/Shotgun.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Soul/BloodSoul.tscn" type="PackedScene" id=15]
+[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=16]
+[ext_resource path="res://LeftRoomEnemySpawner.gd" type="Script" id=17]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://RightRoomEnemySpawner.gd" type="Script" id=19]
+[ext_resource path="res://Sounds/LD45music.wav" type="AudioStream" id=20]
+[ext_resource path="res://Item/ItemSpawner.gd" type="Script" id=21]
+[ext_resource path="res://Item/Boots.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Item/Bow.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Item/DamageUp.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Item/SoulContainer.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Doors/DoorRight.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Doors/DoorCenter.tscn" type="PackedScene" id=28]
+[ext_resource path="res://RoomBlocks.gd" type="Script" id=29]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -1255.26, 600.689, -1141.28, 549.784, -840.132, 547.884, -747.032, 548.834, -718.109, 593.479, -182.982, 286.084, 695.492, 282.496, 778.594, 284.713, 1007.3, 373.008, 1010.56, 456.087, 775.27, 570.586, 696.6, 570.586, -188.636, 563.937, -266.199, 561.721, -501.806, 402.412, -725.319, 121.218, -718.939, 319.444, -759.382, 227.733, -763.182, 171.683, 1708.28, 22.0359, 1707.76, 648.968, 1668.47, 564.604, 1667.52, 508.553, -714.504, 402.412, -757.482, 494.684, -1255.26, 124.823, -848.682, 167.883, 1012.31, 813.387, 777.486, 625.987, 312.934, 809.782, 698.816, 625.987, 201.178, 806.177, -185.312, 622.663, -1221.08, 549.784, -1222.03, 494.684, 1584.87, 561.754, 1241.11, 650.174, 1360.67, 564.604, 1001.5, 13.0669, 775.27, 228.203, -498.201, 16.6719, 693.276, 229.311, -184.982, 229.083, -261.983, 227.083, 1236.99, 371.379, 1236.92, 17.0453, 1579.17, 504.753, 1361.62, 512.353, 1270.42, 508.553, 1235.74, 461.71, -1138.43, 220.133, -847.732, 224.883, -1143.18, 497.534, -1139.38, 165.983, -1218.23, 164.083, 337.16, 1591.51, 184.839, 1593.1, 199.172, 951.111, 312.934, 964.799, -498.201, 798.967, -265.091, 619.339, -509.016, 319.496, -261.983, 284.084, -839.182, 493.734, 1276.12, 562.704, -1219.18, 219.183 )
@@ -312,7 +311,6 @@ position = Vector2( -70.7783, -141.288 )
 navpoly = SubResource( 1 )
 
 [node name="SoulSacrificeArea" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 814.74, 64.8908 )
 script = ExtResource( 7 )
 __meta__ = {
@@ -331,8 +329,8 @@ margin_left = 68.0731
 margin_top = -110.254
 margin_right = 168.073
 margin_bottom = -68.2544
-text = "Press E to feed
-(cost: 1 soul)"
+text = "Press E to 
+offer soul"
 align = 1
 valign = 1
 
@@ -341,16 +339,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Enemy" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 772.417, 488.198 )
-
 [node name="Player" parent="YSort" groups=[
 "player",
-] instance=ExtResource( 9 )]
+] instance=ExtResource( 8 )]
 position = Vector2( 802.196, 158.573 )
-
-[node name="RangedEnemy" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 125.348, 74.5739 )
 
 [node name="FirstRoomEnemies" type="Node2D" parent="YSort"]
 editor/display_folded = true
@@ -358,15 +350,15 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BigEnemy" parent="YSort/FirstRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy" parent="YSort/FirstRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( -464.167, 200.049 )
 awake = false
 
-[node name="BigEnemy2" parent="YSort/FirstRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy2" parent="YSort/FirstRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( -463.059, 591.186 )
 awake = false
 
-[node name="BigEnemy3" parent="YSort/FirstRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy3" parent="YSort/FirstRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( -213.751, 387.307 )
 awake = false
 
@@ -396,23 +388,23 @@ awake = false
 position = Vector2( 1950.58, 308.118 )
 awake = false
 
-[node name="BigRangedEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 2178.68, 426.589 )
 awake = false
 
-[node name="BigRangedEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 1727.61, 444.152 )
 awake = false
 
-[node name="BigRangedEnemy3" parent="YSort/SecondRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy3" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 2053.75, 406.211 )
 awake = false
 
-[node name="BigEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy" parent="YSort/SecondRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 2010.57, 501.005 )
 awake = false
 
-[node name="BigEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy2" parent="YSort/SecondRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 2158.63, 314.147 )
 awake = false
 
@@ -422,155 +414,131 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BigRangedEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 777.637, 983.11 )
 awake = false
 
-[node name="BigRangedEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 783.521, 1193.77 )
 awake = false
 
-[node name="BigRangedEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 824.69, 1238.7 )
 awake = false
 
-[node name="BigRangedEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 12 )]
+[node name="BigRangedEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
 position = Vector2( 826.467, 1146.5 )
 awake = false
 
-[node name="BigEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 825.242, 1033.51 )
 awake = false
 
-[node name="BigEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy2" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 738.659, 1032.66 )
 awake = false
 
-[node name="BigEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy3" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 744.888, 1138.22 )
 awake = false
 
-[node name="BigEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy4" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 786.501, 1087.62 )
 awake = false
 
-[node name="BigEnemy5" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 11 )]
+[node name="BigEnemy5" parent="YSort/ThirdRoomEnemies" instance=ExtResource( 9 )]
 position = Vector2( 742.756, 1240.44 )
 awake = false
 
-[node name="Column" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 302.986, 615.556 )
 
-[node name="Column2" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column2" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 1264.27, 277.906 )
 
 [node name="Sprite" parent="YSort/Column2" index="0"]
 frame = 1
 
-[node name="Column9" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column9" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 1902.12, 154.275 )
 
-[node name="Column10" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column10" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 2154.42, 555.499 )
 
-[node name="Column7" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column7" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( -277.312, 218.699 )
 
-[node name="Column8" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column8" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( -651.613, 545.5 )
 
-[node name="Column3" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column3" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 1264.27, 620.148 )
 
-[node name="Column13" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column13" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 642.465, 1019.88 )
 
-[node name="Column14" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column14" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 942.266, 1271.57 )
 
-[node name="Column18" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column18" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 638.764, 1702.76 )
 
-[node name="Column11" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column11" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 1847.22, 557.227 )
 
-[node name="Column12" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column12" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 2097.94, 155.805 )
 
-[node name="Column4" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column4" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 304.834, 277.746 )
 
 [node name="Sprite" parent="YSort/Column4" index="0"]
 frame = 1
 
-[node name="Column15" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column15" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 934.045, 1012.44 )
 
-[node name="Column16" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column16" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 634.245, 1273.38 )
 
-[node name="Column17" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column17" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 935.896, 1699.02 )
 
-[node name="Column5" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column5" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( -269.418, 540.843 )
 
-[node name="Column6" parent="YSort" instance=ExtResource( 13 )]
+[node name="Column6" parent="YSort" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( -650.756, 215.648 )
 
-[node name="Armor" parent="YSort" instance=ExtResource( 14 )]
+[node name="Armor" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( -464.889, 397.125 )
 
-[node name="Shotgun" parent="YSort" instance=ExtResource( 15 )]
+[node name="Shotgun" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 2214.41, 73.09 )
 
-[node name="BloodSoul" parent="YSort" instance=ExtResource( 16 )]
+[node name="BloodSoul" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 782.836, 1765.19 )
 
-[node name="Node2D" type="Node2D" parent="YSort"]
-
-[node name="Boots" parent="YSort/Node2D" instance=ExtResource( 17 )]
-position = Vector2( 990.626, 311.275 )
-scale = Vector2( 1.3, 1.3 )
-
-[node name="Armor" parent="YSort/Node2D" instance=ExtResource( 14 )]
-position = Vector2( 620.277, 279.465 )
-
-[node name="Bow" parent="YSort/Node2D" instance=ExtResource( 18 )]
-position = Vector2( 797.499, 293.098 )
-
-[node name="DamageUp" parent="YSort/Node2D" instance=ExtResource( 19 )]
-position = Vector2( 920.191, 188.582 )
-
-[node name="HealthPickup" parent="YSort/Node2D" instance=ExtResource( 20 )]
-position = Vector2( 636.181, 152.229 )
-
-[node name="Shotgun" parent="YSort/Node2D" instance=ExtResource( 15 )]
-position = Vector2( 938.368, 90.8831 )
-
-[node name="SoulContainer" parent="YSort/Node2D" instance=ExtResource( 21 )]
-position = Vector2( 722.52, 224.936 )
-
-[node name="EnemySpawner" parent="." instance=ExtResource( 22 )]
+[node name="EnemySpawner" parent="." instance=ExtResource( 16 )]
 
 [node name="LeftRoomEnemySpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 23 )
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_lock_": true
 }
-enemies = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 10 ) ]
+enemies = [ ExtResource( 9 ), ExtResource( 18 ), ExtResource( 10 ) ]
 
 [node name="Position2D" type="Position2D" parent="LeftRoomEnemySpawner"]
 position = Vector2( -593.776, 287.029 )
@@ -598,11 +566,11 @@ position = Vector2( -336.493, 510.497 )
 
 [node name="RightRoomEnemySpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 24 )
+script = ExtResource( 19 )
 __meta__ = {
 "_edit_lock_": true
 }
-enemies = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 10 ) ]
+enemies = [ ExtResource( 9 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 10 ) ]
 
 [node name="Position2D" type="Position2D" parent="RightRoomEnemySpawner"]
 position = Vector2( 2090.97, 254.678 )
@@ -623,17 +591,17 @@ position = Vector2( 2096.98, 511.044 )
 position = Vector2( 1901.95, 510.011 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 25 )
+stream = ExtResource( 20 )
 volume_db = -15.0
 autoplay = true
 
 [node name="ItemSpawner" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 26 )
+script = ExtResource( 21 )
 __meta__ = {
 "_edit_lock_": true
 }
-items = [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 21 ) ]
+items = [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ]
 
 [node name="Position2D" type="Position2D" parent="ItemSpawner"]
 position = Vector2( 44.4336, 843.116 )
@@ -642,29 +610,28 @@ position = Vector2( 44.4336, 843.116 )
 position = Vector2( 1520.88, 844.786 )
 
 [node name="Doors" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Door" parent="Doors" groups=[
 "door1",
-] instance=ExtResource( 27 )]
+] instance=ExtResource( 26 )]
 position = Vector2( 8.07132, 386.057 )
 
 [node name="DoorRight" parent="Doors" groups=[
 "door2",
-] instance=ExtResource( 28 )]
+] instance=ExtResource( 27 )]
 position = Vector2( 1560.73, 459.214 )
 scale = Vector2( 1.17641, 1 )
 souls_needed = 30
 
 [node name="DoorCenter" parent="Doors" groups=[
 "door3",
-] instance=ExtResource( 29 )]
+] instance=ExtResource( 28 )]
 position = Vector2( 776.621, 873.958 )
 scale = Vector2( 1.20002, 1 )
 souls_needed = 50
 
 [node name="RoomBlocks" type="Node2D" parent="."]
-script = ExtResource( 30 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -686,11 +653,11 @@ texture = ExtResource( 3 )
 [connection signal="body_entered" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_entered"]
 [connection signal="body_exited" from="SoulSacrificeArea" to="SoulSacrificeArea" method="_on_SoulSacrificeArea_body_exited"]
 [connection signal="open_door" from="Doors/Door" to="EnemySpawner" method="_on_Door_open_door"]
-[connection signal="open_door" from="Doors/Door" to="LeftRoomEnemySpawner" method="_on_Door_open_door"]
 [connection signal="open_door" from="Doors/Door" to="RoomBlocks" method="_on_Door_open_door"]
+[connection signal="open_door" from="Doors/Door" to="LeftRoomEnemySpawner" method="_on_Door_open_door"]
 [connection signal="open_door" from="Doors/DoorRight" to="EnemySpawner" method="_on_DoorRight_open_door"]
-[connection signal="open_door" from="Doors/DoorRight" to="LeftRoomEnemySpawner" method="_on_DoorRight_open_door"]
 [connection signal="open_door" from="Doors/DoorRight" to="RoomBlocks" method="_on_DoorRight_open_door"]
+[connection signal="open_door" from="Doors/DoorRight" to="LeftRoomEnemySpawner" method="_on_DoorRight_open_door"]
 [connection signal="open_door" from="Doors/DoorCenter" to="RoomBlocks" method="_on_DoorCenter_open_door"]
 
 [editable path="YSort/Column2"]

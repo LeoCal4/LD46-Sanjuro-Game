@@ -15,7 +15,7 @@ var rotation_speed = 3
 var radius = 5
 var angle = 0
 var current_frame = 1
-var hp = MAX_HEALTH / 2 setget set_hp
+var hp = 70 setget set_hp
 var time_passed = 0
 var souls_received = 0
 
